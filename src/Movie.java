@@ -18,6 +18,14 @@ public class Movie {
     public String getDirector() {
         return director;
     }
+    
+    public String getPoster() {
+        return poster;
+    }
+    
+    public String[] getActorList() {
+        return actorList;
+    }
 
     
     
