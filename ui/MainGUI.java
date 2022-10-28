@@ -1,8 +1,9 @@
+import javax.swing.JFrame;
 
 public class MainGUI {
     private JFrame frame;
 
-    public SwingTest() {
+    public MainGUI() {
         frame = new JFrame("Visual Bookz");
     }
 
@@ -14,7 +15,7 @@ public class MainGUI {
     }
 
     public static void main(String[] args) {
-        SwingTest test = new SwingTest();
+    	MainGUI test = new MainGUI();
         test.display();
     }
 }
