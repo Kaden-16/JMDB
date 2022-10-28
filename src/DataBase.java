@@ -14,10 +14,13 @@ public class DataBase {
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(oracle.openStream()));
+        
         String inputLine;
+        
         int value = 0;
+        
         while ((inputLine = in.readLine()) != null) {
-            if (value <= 3) {
+            if (value < 2) {
                 movieList[value] = inputLine;
                 value++;
             } else {
