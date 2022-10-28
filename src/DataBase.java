@@ -6,7 +6,21 @@ import java.net.URL;
 
 public class DataBase {
 
-    public void SearchMovie(String title) throws IOException {
+    public String[] SearchMovie(String title) throws IOException {
+        URL oracle = new URL(
+                "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8k/" + title);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(oracle.openStream()));
+
+        String inputLine;
+        
+        
+        String[] movieList = new String[5];
+        
+        return movieList;
+    }
+    
+    public void SearchMovieByTitle(String title) throws IOException {
         URL oracle = new URL(
                 "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8k/" + title);
         BufferedReader in = new BufferedReader(
