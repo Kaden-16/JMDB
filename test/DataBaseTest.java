@@ -6,7 +6,8 @@ public class DataBaseTest {
     
     @Test
     public void SearchMovieTest() throws Exception {
-        DataBase.SearchMovie("Inception");
+        String[] test;
+        assertEquals(DataBase.SearchMovie("Inception"), test);
         
     }
     
