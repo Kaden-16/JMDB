@@ -1,8 +1,12 @@
 import java.io.BufferedReader;
+import java.io.*;
+import java.util.*;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class DataBase {
 
@@ -10,30 +14,24 @@ public class DataBase {
         Movie[] movieList = new Movie[3];
 
         URL oracle = new URL(
-                "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8k/" + title);
+                "imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/" + title);
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(oracle.openStream()));
-        
+
         String inputLine;
-                
+
         while ((inputLine = in.readLine()) != null) {
             System.out.println(inputLine);
-            
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(inputLine);
+
+            // now get id & value
+            String Description = (String) jsonObject.get("description");
+            String title = (String) jsonObject.get("title");
+
+            movieList[i] = new Movie(title, Description);
         }
-        
-        JSONArray msg = (JSONArray) inputLine;
 
-        for(int i = 0;i < msg.length();i++ ) {
-            JSONObject jsonObj = msg.getJSONObject(i);
-
-            //now get id & value
-            int year = jsonObj.getInt("year");
-            String title = jsonObj.getString("title");
-
-            movieList[i] = new Movie(title, year);
-        }
-        
         in.close();
 
         return movieList;
