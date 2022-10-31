@@ -9,10 +9,11 @@ public class Movie {
     private double reviewRating;
     // Might not be able to do it
     private String movieRating;
+    private String Description;
 
-    public Movie(String title, int year) {
+    public Movie(String title, String description) {
         this.title = title;
-        this.year = year;
+        this.Description = description;
     }
 
     public Movie(String title, String director, String poster,
