@@ -6,8 +6,8 @@ import java.net.URL;
 
 public class DataBase {
 
-    public static String[] SearchMovie(String title) throws IOException {
-        String[] movieList = new String[3];
+    public static Movie[] SearchMovie(String title) throws IOException {
+        Movie[] movieList = new Movie[3];
 
         URL oracle = new URL(
                 "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8k/" + title);
@@ -22,6 +22,7 @@ public class DataBase {
         while ((inputLine = in.readLine()) != null) {
             if (value < 2) {
                 movieList[value] = inputLine;
+                System.out.println(movieList[value] + "\n");
                 value++;
             } else {
                 break;
