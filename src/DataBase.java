@@ -16,18 +16,24 @@ public class DataBase {
                 new InputStreamReader(oracle.openStream()));
         
         String inputLine;
-        
-        int value = 0;
-        
+                
         while ((inputLine = in.readLine()) != null) {
-            if (value < 2) {
-                movieList[value] = inputLine;
-                System.out.println(movieList[value] + "\n");
-                value++;
-            } else {
-                break;
-            }
+            System.out.println(inputLine);
+            
         }
+        
+        JSONArray msg = (JSONArray) inputLine;
+
+        for(int i = 0;i < msg.length();i++ ) {
+            JSONObject jsonObj = msg.getJSONObject(i);
+
+            //now get id & value
+            int year = jsonObj.getInt("year");
+            String title = jsonObj.getString("title");
+
+            movieList[i] = new Movie(title, year);
+        }
+        
         in.close();
 
         return movieList;
