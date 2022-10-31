@@ -6,7 +6,7 @@ import java.net.URL;
 
 public class DataBase {
 
-    public String[] SearchMovie(String title) throws IOException {
+    public static String[] SearchMovie(String title) throws IOException {
         String[] movieList = new String[3];
 
         URL oracle = new URL(
