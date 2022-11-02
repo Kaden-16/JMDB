@@ -19,7 +19,7 @@ public class DataBase {
         ObjectMapper map = new ObjectMapper();
 
         JsonNode tree = map.readTree(in);
-        //System.out.println(tree.toPrettyString());
+        System.out.println(tree.toPrettyString());
         for (int i = 0; i < tree.size(); i++) {
             if(i < 3) {
             //System.out.println(tree.get("results").get(i).get("description").asText());
@@ -43,7 +43,7 @@ public class DataBase {
 
         Movie finalMovie = new Movie(title, title, title, null, 0, title, 0, 0);
         JsonNode tree = map.readTree(in);
-        //System.out.println(tree.toPrettyString());
+        System.out.println(tree.toPrettyString());
         for (int i = 0; i < tree.size(); i++) {
             if(i < 3) {
             //System.out.println(tree.get("results").get(i).get("description").asText());

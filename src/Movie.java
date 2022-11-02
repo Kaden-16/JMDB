@@ -21,7 +21,6 @@ public class Movie {
         }
         try {
             this.year = Integer.parseInt(answer);
-            System.out.println(year);
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
