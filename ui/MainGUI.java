@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class MainGUI implements ActionListener {
     private JFrame frame;
@@ -24,14 +25,12 @@ public class MainGUI implements ActionListener {
     public MainGUI() {
         frame = new JFrame("JMU IMDB");
         searchPanel();
-        //moviePanel();
         display();
     }
 
     private void display() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-       // frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
     }
@@ -49,7 +48,7 @@ public class MainGUI implements ActionListener {
       Image icon = (new ImageIcon("mag.png")).getImage().getScaledInstance(b.getWidth(), b.getHeight(), Image.SCALE_SMOOTH);
       b.setIcon(new ImageIcon(icon));
       panel1.setVisible(true);
-      panel1.setBackground(Color.red);
+      panel1.setBackground(new Color(255, 243, 109));
       panel1.add(label).setVisible(true);
       panel1.add(searchText).setVisible(true);
       panel1.add(b).setVisible(true);
@@ -60,7 +59,6 @@ public class MainGUI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        
         try
         {
           SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), frame);
