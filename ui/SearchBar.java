@@ -22,7 +22,7 @@ public class SearchBar{
 	public static Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 	
 	public static void showSearchMovies(Movie[] results, JFrame frame) {
-		Color purple = new Color(104,71,141);
+		Color purple = new Color(197,180,227);
 		frame.add(mainPanel);
 		
 		mainPanel.add(firstResult);
