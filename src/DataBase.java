@@ -19,9 +19,10 @@ public class DataBase {
         ObjectMapper map = new ObjectMapper();
 
         JsonNode tree = map.readTree(in);
+        //System.out.println(tree.toPrettyString());
         for (int i = 0; i < tree.size(); i++) {
             if(i < 3) {
-
+                System.out.println(tree.get("results").get(i).get("title").asText());
             movieList[i] = new Movie(tree.get("results").get(i).get("title").asText(),
                     tree.get("results").get(i).get("description").asText());
             } else {
