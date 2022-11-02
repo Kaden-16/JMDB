@@ -24,7 +24,7 @@ public class MainGUI implements ActionListener {
     public MainGUI() {
         frame = new JFrame("JMU IMDB");
         searchPanel();
-        moviePanel();
+        //moviePanel();
         display();
     }
 
