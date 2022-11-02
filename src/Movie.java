@@ -9,16 +9,20 @@ public class Movie {
     private double reviewRating;
     // Might not be able to do it
     private String movieRating;
-    private String Description;
 
     public Movie(String title, String description) {
         this.title = title;
-        String answer = description.substring(0,4).trim();
-        try{
+        String answer;
+        if (description.contains("(")) {
+            answer = description.substring(description.indexOf("(") + 1,
+                    description.indexOf(")"));
+        } else {
+            answer = description.substring(0, 4).trim();
+        }
+        try {
             this.year = Integer.parseInt(answer);
             System.out.println(year);
-        }
-        catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
     }
