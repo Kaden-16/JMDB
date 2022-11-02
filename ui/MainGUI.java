@@ -56,14 +56,14 @@ public class MainGUI implements ActionListener {
       return panel1;
     }
   
-    private JPanel moviePanel() {
-      panel2 = new JPanel();
-      frame.add(panel2);
-      panel2.setVisible(true);
-      panel2.setBounds(panel1.getX(), panel1.getY(), frame.getWidth(), frame.getHeight());
-      panel2.setBackground(Color.blue);
-      return panel2;
-    }
+   // private JPanel moviePanel() {
+   //  panel2 = new JPanel();
+   ///   frame.add(panel2);
+   //   panel2.setVisible(true);
+   //   panel2.setBounds(panel1.getX(), panel1.getY(), frame.getWidth(), frame.getHeight());
+    //  panel2.setBackground(Color.blue);
+     // return panel2;
+   // }
     
     @Override
     public void actionPerformed(ActionEvent e)
@@ -71,7 +71,7 @@ public class MainGUI implements ActionListener {
         
         try
         {
-          SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), moviePanel());
+          SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), frame);
         }
         catch (IOException e1)
         {

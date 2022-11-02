@@ -21,9 +21,9 @@ public class SearchBar{
 	public static JLabel thirdLabel;
 	public static Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 	
-	public static void showSearchMovies(Movie[] results, JPanel panel) {
+	public static void showSearchMovies(Movie[] results, JFrame frame) {
 		Color purple = new Color(104,71,141);
-		panel.add(mainPanel);
+		frame.add(mainPanel);
 		
 		mainPanel.add(firstResult);
 		mainPanel.add(secondResult);
