@@ -20,9 +20,9 @@ public class SearchBarTest {
     	JPanel main = new JPanel();
     	frame.add(main);
     	Movie[] test = new Movie[3];
-    	Movie fake1 = new Movie("Inception", "Chicken");
-    	Movie fake2 = new Movie("Pulp Fiction", "Tasty Burger");
-    	Movie fake3 = new Movie("Harry Potter", "Wiazard");
+    	Movie fake1 = new Movie("Inception", "1975");
+    	Movie fake2 = new Movie("Pulp Fiction", "1975");
+    	Movie fake3 = new Movie("Harry Potter", "1975");
     	test[0] = fake1;
     	test[1] = fake2;
     	test[2] = fake3;
