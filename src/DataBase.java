@@ -18,15 +18,14 @@ public class DataBase {
 
         ObjectMapper map = new ObjectMapper();
         JsonNode tree = map.readTree(in);
-
+        System.out.println("Are you making it here");
         for (int i = 0; i < tree.size(); i++) {
-            if (tree.get(i).get("title").asText() != null) {
-                movieList[i] = new Movie(tree.get(i).get("title").asText(),
-                        tree.get(i).get("description").asText());
-                System.out.println(movieList[i]);
-            } else {
-                break;
-            }
+            System.out.println("Are you making it here1");
+
+            movieList[i] = new Movie(tree.get(i).get("title").asText(),
+                    tree.get(i).get("description").asText());
+            System.out.println(tree.get(i).get("title").asText());
+
         }
         return movieList;
     }
