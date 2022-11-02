@@ -16,14 +16,17 @@ public class DataBase {
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(oracle.openStream()));
 
-
         ObjectMapper map = new ObjectMapper();
         JsonNode tree = map.readTree(in);
 
         for (int i = 0; i < tree.size(); i++) {
-            movieList[i] = new Movie(tree.get(i).get("title").asText(),
-                    tree.get(i).get("description").asText());
-            System.out.println(movieList[i]);
+            if (tree.get(i).get("title").asText() != null) {
+                movieList[i] = new Movie(tree.get(i).get("title").asText(),
+                        tree.get(i).get("description").asText());
+                System.out.println(movieList[i]);
+            } else {
+                break;
+            }
         }
         return movieList;
     }
