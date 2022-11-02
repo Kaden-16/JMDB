@@ -13,7 +13,13 @@ public class Movie {
 
     public Movie(String title, String description) {
         this.title = title;
-        this.Description = description;
+        String answer = description.substring(description.indexOf("(")+1, description.indexOf(")"));
+        try{
+            this.year = Integer.parseInt(answer);
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
     }
 
     public Movie(String title, String director, String poster,
