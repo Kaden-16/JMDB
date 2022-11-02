@@ -1,5 +1,8 @@
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -32,16 +35,19 @@ public class MainGUI implements ActionListener {
       JPanel panel = new JPanel();
       frame.add(panel, BorderLayout.NORTH);
       JLabel label = new JLabel("Search");
-      JTextField searchText = new JTextField();
-      ImageIcon icon = new ImageIcon("mag.png");
-      JButton button = new JButton(icon);
+      label.setFont(new Font("Sherif", Font.PLAIN, 17));
+      JTextField searchText = new JTextField(20);
+      searchText.setColumns(22);
+      JButton b = new JButton();
+      b.setSize(20, 20);
+      b.addActionListener(this);
+      Image icon = (new ImageIcon("mag.png")).getImage().getScaledInstance(b.getWidth(), b.getHeight(), Image.SCALE_SMOOTH);
+      b.setIcon(new ImageIcon(icon));
       panel.setVisible(true);
-      label.setSize(10, 100);
-      searchText.setSize(50, 100);
-      button.setSize(10, 10);
+      panel.setBackground(Color.red);
       panel.add(label).setVisible(true);
       panel.add(searchText).setVisible(true);
-      panel.add(button).setVisible(true);
+      panel.add(b).setVisible(true);
       return panel;
     }
     
@@ -49,6 +55,7 @@ public class MainGUI implements ActionListener {
     public void actionPerformed(ActionEvent e)
     {
       // TODO Auto-generated method stub
+      
       
     }
     
