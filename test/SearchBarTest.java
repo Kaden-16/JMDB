@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 public class SearchBarTest {
@@ -16,7 +17,8 @@ public class SearchBarTest {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.pack();
         frame.setVisible(true);
-    	
+    	JPanel main = new JPanel();
+    	frame.add(main);
     	Movie[] test = new Movie[3];
     	Movie fake1 = new Movie("Inception", "Chicken");
     	Movie fake2 = new Movie("Pulp Fiction", "Tasty Burger");
@@ -25,7 +27,7 @@ public class SearchBarTest {
     	test[1] = fake2;
     	test[2] = fake3;
     	
-    	SearchBar.showSearchMovies(test, frame);
+    	SearchBar.showSearchMovies(test, main);
 	}
     
 }
