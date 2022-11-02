@@ -13,9 +13,10 @@ public class Movie {
 
     public Movie(String title, String description) {
         this.title = title;
-        String answer = description.substring(description.indexOf("(")+1, description.indexOf(")"));
+        String answer = description.substring(0,4).trim();
         try{
             this.year = Integer.parseInt(answer);
+            System.out.println(year);
         }
         catch (NumberFormatException ex){
             ex.printStackTrace();
