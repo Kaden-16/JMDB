@@ -69,7 +69,15 @@ public class MainGUI implements ActionListener {
     public void actionPerformed(ActionEvent e)
     {
         
-        SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText())), moviePanel());
+        try
+        {
+          SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), moviePanel());
+        }
+        catch (IOException e1)
+        {
+          // TODO Auto-generated catch block
+          e1.printStackTrace();
+        }
       
     }
     
