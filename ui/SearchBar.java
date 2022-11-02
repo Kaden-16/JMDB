@@ -11,17 +11,17 @@ import javax.swing.border.Border;
 public class SearchBar{
 
 	
-	public  static JPanel firstResult = new JPanel();
-	public  static JPanel secondResult = new JPanel();
-	public  static JPanel thirdResult= new JPanel();
-	public static JPanel mainPanel = new JPanel(new GridLayout(3,1));
-	
-	public static JLabel firstLabel;
-	public static JLabel secondLabel;
-	public static JLabel thirdLabel;
-	public static Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
-	
 	public static void showSearchMovies(Movie[] results, JFrame frame) {
+		JPanel firstResult = new JPanel();
+		JPanel secondResult = new JPanel();
+		JPanel thirdResult= new JPanel();
+		JPanel mainPanel = new JPanel(new GridLayout(3,1));
+		
+		JLabel firstLabel;
+		JLabel secondLabel;
+		JLabel thirdLabel;
+		Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
+		
 		Color purple = new Color(197,180,227);
 		frame.add(mainPanel);
 		
