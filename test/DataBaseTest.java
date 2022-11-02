@@ -10,8 +10,11 @@ public class DataBaseTest {
     
     @Test
     public void SearchMovieTest() throws Exception {
-        String[] test = null;
-        assertEquals(DataBase.SearchMovie("Inception"), test);
+        Movie[] test = DataBase.SearchMovie("Inception");
+        int i = 0;
+        assertEquals(test[i].getTitle(), "Inception");
+        assertEquals(test[i].getYear(), 2010);
+
         
     }
     
