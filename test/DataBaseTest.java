@@ -12,8 +12,20 @@ public class DataBaseTest {
     public void SearchMovieTest() throws Exception {
         Movie[] test = DataBase.SearchMovie("Star Wars");
         int i = 0;
-        assertEquals(test[i].getTitle(), "Star Wars");
-        assertEquals(test[i].getYear(), 2010);
+        assertEquals(test[i].getTitle(), "Star Wars: Episode IV - A New Hope");
+        assertEquals(test[i].getYear(), 1977);
+        assertEquals(test[i].getID(), "tt0076759");
+
+        
+        
+    }
+    
+    @Test
+    public void SearchMovieByIDTest() throws Exception {
+        Movie test = DataBase.SearchMovieByID("tt0076759");
+        assertEquals(test.getTitle(), "Star Wars: Episode IV - A New Hope");
+        assertEquals(test.getYear(), 1977);
+        assertEquals(test.getID(), "tt0076759");
 
         
         

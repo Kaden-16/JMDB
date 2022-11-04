@@ -19,13 +19,14 @@ public class DataBase {
         ObjectMapper map = new ObjectMapper();
 
         JsonNode tree = map.readTree(in);
-        System.out.println(tree.toPrettyString());
         for (int i = 0; i < tree.size(); i++) {
-            if(i < 3) {
-            //System.out.println(tree.get("results").get(i).get("description").asText());
+            if (i < 3) {
+                // System.out.println(tree.get("results").get(i).get("description").asText());
 
-            movieList[i] = new Movie(tree.get("results").get(i).get("title").asText(),
-                    tree.get("results").get(i).get("description").asText());
+                movieList[i] = new Movie(
+                        tree.get("results").get(i).get("title").asText(),
+                        tree.get("results").get(i).get("description").asText(),
+                        tree.get("results").get(i).get("id").asText());
             } else {
                 break;
             }
@@ -33,27 +34,37 @@ public class DataBase {
         return movieList;
     }
 
-    public Movie SearchMovieByTitle(String title) throws IOException {
+    public static Movie SearchMovieByID(String id) throws IOException {
         URL oracle = new URL(
-                "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/" + title);
+                "https://imdb-api.com/en/API/Title/k_mcx0w8kk/" + id);
 
         InputStream in = oracle.openStream();
 
         ObjectMapper map = new ObjectMapper();
 
-        Movie finalMovie = new Movie(title, title, title, null, 0, title, 0, 0);
         JsonNode tree = map.readTree(in);
-        System.out.println(tree.toPrettyString());
-        for (int i = 0; i < tree.size(); i++) {
-            if(i < 3) {
-            //System.out.println(tree.get("results").get(i).get("description").asText());
+        
+        //System.out.println(tree.toPrettyString());
 
-            //movieList[i] = new Movie(tree.get("results").get(i).get("title").asText(),
-                    //tree.get("results").get(i).get("description").asText());
-            } else {
-                break;
-            }
+        String title = tree.get("title").asText();
+        String ID = tree.get("id").asText();
+        String director = tree.get("directors").asText();
+        String year = tree.get("year").asText();
+        String image = tree.get("image").asText();
+        String contentRating = tree.get("contentRating").asText();
+        String imDbRating = tree.get("imDbRating").asText();
+        
+        String[] actorList = new String[5];
+        
+        for (int i = 0; i < actorList.length; i++) {
+            actorList[i] = tree.get("actorList").get(i).get("name").asText();
+            System.out.println(actorList[i]);
+
         }
+        
+        Movie finalMovie = new Movie(title, director, ID, image, actorList,
+                imDbRating, contentRating, year);
+
         return finalMovie;
     }
 }

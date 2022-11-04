@@ -6,11 +6,12 @@ public class Movie {
     private String director;
     private String poster;
     private String[] actorList;
-    private double reviewRating;
+    private String imDbRating;
     // Might not be able to do it
     private String movieRating;
+    private String id;
 
-    public Movie(String title, String description) {
+    public Movie(String title, String description, String id) {
         this.title = title;
         String answer;
         if (description.contains("(")) {
@@ -24,18 +25,24 @@ public class Movie {
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
+        this.id = id;
     }
 
-    public Movie(String title, String director, String poster,
-            String[] actorList, double reviewRating, String movieRating,
-            int pages, int year) {
+    public Movie(String title, String director, String id, String poster,
+            String[] actorList, String imDbRating, String movieRating,
+            String year) {
         this.title = title;
         this.director = director;
+        this.id = id;
         this.poster = poster;
         this.actorList = actorList;
-        this.reviewRating = reviewRating;
+        this.imDbRating = imDbRating;
         this.movieRating = movieRating;
-        this.year = year;
+        try {
+            this.year = Integer.parseUnsignedInt(year);
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public String getTitle() {
@@ -54,12 +61,16 @@ public class Movie {
         return actorList;
     }
 
-    public double getReviewRating() {
-        return reviewRating;
+    public String getIMDBRating() {
+        return imDbRating;
     }
 
-    public String movieRating() {
+    public String getMovieRating() {
         return movieRating;
+    }
+
+    public String getID() {
+        return id;
     }
 
     public int getYear() {
