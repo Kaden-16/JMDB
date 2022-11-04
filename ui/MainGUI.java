@@ -74,7 +74,6 @@ public class MainGUI implements ActionListener {
     
     public static void main(String[] args) throws IOException {
         MainGUI test = new MainGUI();
-        test.display();
     }
 
 }
