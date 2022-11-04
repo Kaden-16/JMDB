@@ -27,7 +27,7 @@ public class SearchBarTest {
     	test[1] = fake2;
     	test[2] = fake3;
     	
-    	SearchBar.showSearchMovies(test, main);
+    	SearchBar.showSearchMovies(test, frame);
 	}
     
 }
