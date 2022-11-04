@@ -10,16 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 
-public class MainGUI implements ActionListener {
+public class MainGUI {
     private JFrame frame;
     private JTextField searchText;
     private JPanel panel1;
@@ -46,10 +40,11 @@ public class MainGUI implements ActionListener {
       JLabel label = new JLabel("Search");
       label.setFont(new Font("Sherif", Font.PLAIN, 17));
       searchText = new JTextField(20);
+      searchText.setAction(searchAction);
       searchText.setColumns(22);
       JButton b = new JButton();
       b.setSize(20, 20);
-      b.addActionListener(this);
+      b.setAction(searchAction);
       Image icon = (new ImageIcon("mag.png")).getImage().getScaledInstance(b.getWidth(), b.getHeight(), Image.SCALE_SMOOTH);
       b.setIcon(new ImageIcon(icon));
       panel1.setVisible(true);
@@ -59,23 +54,22 @@ public class MainGUI implements ActionListener {
       panel1.add(b).setVisible(true);
       return panel1;
     }
-  
-    
-    @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        try
-        {
-          if (searchText != null) {
-          SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), frame);
-          }
+
+    Action searchAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try
+            {
+                if (searchText != null) {
+                    SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), frame);
+                }
+            }
+            catch (IOException e1)
+            {
+                e1.printStackTrace();
+            }
         }
-        catch (IOException e1)
-        {
-          e1.printStackTrace();
-        }
-      
-    }
+    };
     
     public static void main(String[] args) throws IOException {
         MainGUI test = new MainGUI();
