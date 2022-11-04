@@ -10,7 +10,22 @@ public class Movie {
     // Might not be able to do it
     private String movieRating;
     private String id;
-
+    public Movie(String title, String description) {
+        this.title = title;
+        String answer;
+        if (description.contains("(")) {
+            answer = description.substring(description.indexOf("(") + 1,
+                    description.indexOf(")"));
+        } else {
+            answer = description.substring(0, 4).trim();
+        }
+        try {
+            this.year = Integer.parseInt(answer);
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public Movie(String title, String description, String id) {
         this.title = title;
         String answer;
