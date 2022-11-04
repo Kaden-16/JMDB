@@ -10,7 +10,7 @@ public class DataBaseTest {
     
     @Test
     public void SearchMovieTest() throws Exception {
-        Movie[] test = DataBase.SearchMovie("Star Wars");
+        Movie[] test = DataBase.SearchMovie("Star Wars: Episode IV");
         int i = 0;
         assertEquals(test[i].getTitle(), "Star Wars: Episode IV - A New Hope");
         assertEquals(test[i].getYear(), 1977);
@@ -26,8 +26,11 @@ public class DataBaseTest {
         assertEquals(test.getTitle(), "Star Wars: Episode IV - A New Hope");
         assertEquals(test.getYear(), 1977);
         assertEquals(test.getID(), "tt0076759");
+        assertEquals(test.getDirector(), "George Lucas");
+        assertEquals(test.getMovieRating(), "PG");
+        assertEquals(test.getIMDBRating(), "8.6");
+        //assertEquals(test.getActorList(), "8.6");
 
-        
         
     }
     

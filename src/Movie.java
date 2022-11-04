@@ -5,11 +5,13 @@ public class Movie {
     private int year;
     private String director;
     private String poster;
-    private String[] actorList;
+    private Actor[] actorList;
     private String imDbRating;
     // Might not be able to do it
     private String movieRating;
     private String id;
+    private String plot;
+    //Base Tests
     public Movie(String title, String description) {
         this.title = title;
         String answer;
@@ -44,8 +46,8 @@ public class Movie {
     }
 
     public Movie(String title, String director, String id, String poster,
-            String[] actorList, String imDbRating, String movieRating,
-            String year) {
+            Actor[] actorList, String imDbRating, String movieRating,
+            String year, String plot) {
         this.title = title;
         this.director = director;
         this.id = id;
@@ -53,6 +55,7 @@ public class Movie {
         this.actorList = actorList;
         this.imDbRating = imDbRating;
         this.movieRating = movieRating;
+        this.plot = plot;
         try {
             this.year = Integer.parseUnsignedInt(year);
         } catch (NumberFormatException ex) {
@@ -72,7 +75,7 @@ public class Movie {
         return poster;
     }
 
-    public String[] getActorList() {
+    public Actor[] getActorList() {
         return actorList;
     }
 
