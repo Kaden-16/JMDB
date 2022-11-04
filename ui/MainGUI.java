@@ -61,11 +61,12 @@ public class MainGUI implements ActionListener {
     {
         try
         {
+          if (searchText != null) {
           SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), frame);
+          }
         }
         catch (IOException e1)
         {
-          // TODO Auto-generated catch block
           e1.printStackTrace();
         }
       
