@@ -1,3 +1,5 @@
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.io.BufferedReader;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,9 +9,12 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.swing.JPanel;
+
 /**
- * DataBase class
- * Accesses the IMDB database with specific inputs given by the user
+ * DataBase class Accesses the IMDB database with specific inputs given by the
+ * user
+ * 
  * @author Walker
  *
  */
@@ -128,6 +133,20 @@ public class DataBase {
             }
         }
         return actorList;
-
     }
+
+//    public static JPanel MediaPlayer(String id) {
+//        JPanel panel = new JPanel();
+//        // file you want to play
+//        URL mediaURL = new URL(
+//                "https://imdb-api.com/en/API/Trailer/k_mcx0w8kk/" + id);
+//        // create the media player with the media url
+//        VideoPlayer mediaPlayer = Manager.createRealizedPlayer(mediaURL);
+//        // get components for video and playback controls
+//        Component video = mediaPlayer.getVisualComponent();
+//        Component controls = mediaPlayer.getControlPanelComponent();
+//        panel.add(video, BorderLayout.CENTER);
+//        panel.add(controls, BorderLayout.SOUTH);
+//    }
+
 }

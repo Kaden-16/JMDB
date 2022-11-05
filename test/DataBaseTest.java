@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DataBaseTest {
-    
-    
-    
+
     @Test
     public void SearchMovieTest() throws Exception {
         Movie[] test = DataBase.SearchMovie("Star Wars: Episode IV");
@@ -16,10 +14,8 @@ public class DataBaseTest {
         assertEquals(test[i].getYear(), 1977);
         assertEquals(test[i].getID(), "tt0076759");
 
-        
-        
     }
-    
+
     @Test
     public void SearchMovieByIDTest() throws Exception {
         Movie test = DataBase.SearchMovieByID("tt0076759");
@@ -29,9 +25,8 @@ public class DataBaseTest {
         assertEquals(test.getDirector(), "George Lucas");
         assertEquals(test.getMovieRating(), "PG");
         assertEquals(test.getIMDBRating(), "8.6");
-        //assertEquals(test.getActorList(), "8.6");
+        // assertEquals(test.getActorList(), "8.6");
 
-        
     }
-    
+
 }
