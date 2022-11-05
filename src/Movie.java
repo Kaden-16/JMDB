@@ -11,6 +11,8 @@ public class Movie {
     private String movieRating;
     private String id;
     private String plot;
+    
+    
     //Base Tests
     public Movie(String title, String description) {
         this.title = title;
