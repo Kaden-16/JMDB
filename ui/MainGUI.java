@@ -3,7 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -17,12 +17,22 @@ public class MainGUI {
     private JFrame frame;
     private JTextField searchText;
     private JPanel panel1;
-    private JPanel panel2;
+    JPanel welcome;
 
 
     public MainGUI() {
         frame = new JFrame("JMU IMDB");
         searchPanel();
+       
+        welcome = new JPanel();
+        welcome.setLayout(new GridBagLayout());
+        welcome.setBounds(panel1.getX(), panel1.getY(), frame.HEIGHT, frame.WIDTH);
+        frame.add(welcome);
+        welcome.setBackground(new Color(69, 0, 132));
+        JLabel welcomeLabel = new JLabel("JMU IMDB");
+        welcomeLabel.setForeground(Color.white);
+        welcomeLabel.setFont(new Font("Amazon Ember", Font.BOLD, 50));
+        welcome.add(welcomeLabel); 
         display();
     }
 
@@ -33,6 +43,7 @@ public class MainGUI {
         frame.setSize(screenSize.width, screenSize.height);
         frame.setVisible(true);
     }
+    
     
     private JPanel searchPanel() {
       panel1 = new JPanel();
