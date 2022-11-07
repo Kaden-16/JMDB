@@ -110,7 +110,7 @@ public class DataBase {
      * @throws IOException
      */
     public static Actor[] SearchActor(String name) throws IOException {
-        Actor[] actorList = new Actor[3];
+        Actor[] actorList = new Actor[6];
 
         URL oracle = new URL(
                 "https://imdb-api.com/en/API/SearchName/k_mcx0w8kk/" + name);
@@ -122,7 +122,7 @@ public class DataBase {
         JsonNode tree = map.readTree(in);
 
         for (int i = 0; i < tree.size(); i++) {
-            if (i < 3) {
+            if (i < 6) {
                 // System.out.println(tree.get("results").get(i).get("description").asText());
                 // Suggested Actors
                 actorList[i] = new Actor(
