@@ -34,26 +34,21 @@ public class DataBase {
         URL oracle = new URL(
                 "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/" + title);
 
-        
-        InputStream in = oracle.openStream();
+        InputStream in = oracle.openConnection().getInputStream();
 
         ObjectMapper map = new ObjectMapper();
 
         JsonNode tree = map.readTree(in);
-        
-        System.out.println(tree.toPrettyString());
-        
+
+        //System.out.println(tree.toPrettyString());
+
         for (int i = 0; i < 6; i++) {
-            if (i < 6) {
-                // System.out.println(tree.get("results").get(i).get("description").asText());
-                System.out.println(i);
-                movieList[i] = new Movie(
-                        tree.get("results").get(i).get("title").asText(),
-                        tree.get("results").get(i).get("description").asText(),
-                        tree.get("results").get(i).get("id").asText());
-            } else {
-                break;
-            }
+            // System.out.println(tree.get("results").get(i).get("description").asText());
+            movieList[i] = new Movie(
+                    tree.get("results").get(i).get("title").asText(),
+                    tree.get("results").get(i).get("description").asText(),
+                    tree.get("results").get(i).get("id").asText());
+            
         }
         return movieList;
     }

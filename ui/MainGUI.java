@@ -21,7 +21,7 @@ public class MainGUI {
 
 
     public MainGUI() {
-        frame = new JFrame("JMU IMDB");
+        frame = new JFrame();
         searchPanel();
        
         welcome = new JPanel();
@@ -71,6 +71,7 @@ public class MainGUI {
         public void actionPerformed(ActionEvent e) {
             try
             {
+              welcome.setVisible(false);
                 if (searchText != null) {
                     SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), frame);
                 }
