@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,7 +13,7 @@ public class SearchBar{
 
 	
 	public static void showSearchMovies(Movie[] results, JFrame frame) {
-		JPanel firstResult = new JPanel();
+		JPanel firstResult = new JPanel(new BorderLayout());
 		JPanel secondResult = new JPanel();
 		JPanel thirdResult= new JPanel();
 		JPanel fourthResult= new JPanel();
@@ -28,13 +29,15 @@ public class SearchBar{
 		JLabel sixthLabel;
 		Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 		
-		Color purple = new Color(197,180,227);
+		Color purple = new Color(181,153,206);
 		frame.add(mainPanel);
 		
 		mainPanel.add(firstResult);
 		mainPanel.add(secondResult);
 		mainPanel.add(thirdResult);
 		mainPanel.add(fourthResult);
+		mainPanel.add(fifthResult);
+		mainPanel.add(sixthResult);
 		
 		
 		firstResult.setSize(250, 75);
@@ -44,9 +47,13 @@ public class SearchBar{
 		firstLabel = new JLabel(movieResultOne);
 		firstLabel.setBackground(Color.blue);
 		firstLabel.setHorizontalAlignment(JLabel.CENTER);
-		firstLabel.setVerticalAlignment(JLabel.CENTER);
-		firstResult.add(firstLabel);
+		firstResult.add(firstLabel,BorderLayout.NORTH);
 		firstResult.setVisible(true);
+		
+		JButton button1 = new JButton("View Movie");
+		button1.setSize(250, 75);
+		button1.setHorizontalAlignment(JButton.CENTER);
+		firstResult.add(button1, BorderLayout.SOUTH);
 		
 		secondResult.setSize(250, 75);
 		secondResult.setBorder(blackBorder);
