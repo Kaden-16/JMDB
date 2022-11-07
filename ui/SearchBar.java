@@ -16,12 +16,16 @@ public class SearchBar{
 		JPanel secondResult = new JPanel();
 		JPanel thirdResult= new JPanel();
 		JPanel fourthResult= new JPanel();
+		JPanel fifthResult= new JPanel();
+		JPanel sixthResult= new JPanel();
 		JPanel mainPanel = new JPanel(new GridLayout(3,2));
 		
 		JLabel firstLabel;
 		JLabel secondLabel;
 		JLabel thirdLabel;
 		JLabel fourthLabel;
+		JLabel fifthLabel;
+		JLabel sixthLabel;
 		Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 		
 		Color purple = new Color(197,180,227);
@@ -73,5 +77,25 @@ public class SearchBar{
 		fourthLabel.setVerticalAlignment(JLabel.CENTER);
 		fourthResult.add(fourthLabel);
 		fourthResult.setVisible(true);
+		
+		fifthResult.setSize(250, 75);
+		fifthResult.setBorder(blackBorder);
+		fifthResult.setBackground(purple);
+		String movieResultFive = String.format("%s (%s)", results[4].getTitle(), results[4].getYear());
+		fifthLabel = new JLabel(movieResultFive);
+		fifthLabel.setHorizontalAlignment(JLabel.CENTER);
+		fifthLabel.setVerticalAlignment(JLabel.CENTER);
+		fifthResult.add(fifthLabel);
+		fifthResult.setVisible(true);
+		
+		sixthResult.setSize(250, 75);
+		sixthResult.setBorder(blackBorder);
+		sixthResult.setBackground(purple);
+		String movieResultSix = String.format("%s (%s)", results[5].getTitle(), results[5].getYear());
+		sixthLabel = new JLabel(movieResultSix);
+		sixthLabel.setHorizontalAlignment(JLabel.CENTER);
+		sixthLabel.setVerticalAlignment(JLabel.CENTER);
+		sixthResult.add(sixthLabel);
+		sixthResult.setVisible(true);
 	}
 }
