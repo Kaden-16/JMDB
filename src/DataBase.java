@@ -40,17 +40,15 @@ public class DataBase {
 
         JsonNode tree = map.readTree(in);
 
-        System.out.println(tree.toPrettyString());
+        //System.out.println(tree.toPrettyString());
 
         for (int i = 0; i < 6; i++) {
             // System.out.println(tree.get("results").get(i).get("description").asText());
-            System.out.println(i);
             movieList[i] = new Movie(
                     tree.get("results").get(i).get("title").asText(),
                     tree.get("results").get(i).get("description").asText(),
                     tree.get("results").get(i).get("id").asText());
             
-            System.out.println(tree.get("results").get(i).get("title").asText());
         }
         return movieList;
     }
