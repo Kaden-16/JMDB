@@ -71,6 +71,7 @@ public class MainGUI {
         public void actionPerformed(ActionEvent e) {
             try
             {
+              welcome.setVisible(false);
                 if (searchText != null) {
                     SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), frame);
                 }
