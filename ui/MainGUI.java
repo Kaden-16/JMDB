@@ -21,7 +21,7 @@ public class MainGUI {
 
 
     public MainGUI() {
-        frame = new JFrame("JMU IMDB");
+        frame = new JFrame();
         searchPanel();
        
         welcome = new JPanel();
