@@ -47,7 +47,7 @@ public class DataBase {
 
                 movieList[i] = new Movie(
                         tree.get("results").get(i).get("title").asText(),
-                        tree.get("results").get(i).get("year").asText(),
+                        tree.get("results").get(i).get("description").asText(),
                         tree.get("results").get(i).get("id").asText());
             } else {
                 break;
