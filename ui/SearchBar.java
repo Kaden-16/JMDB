@@ -1,25 +1,37 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import java.nio.file.Paths;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SearchBar{
 
 	
 	public static void showSearchMovies(Movie[] results, JFrame frame) {
 		JPanel firstResult = new JPanel(new BorderLayout());
-		JPanel secondResult = new JPanel();
-		JPanel thirdResult= new JPanel();
-		JPanel fourthResult= new JPanel();
-		JPanel fifthResult= new JPanel();
-		JPanel sixthResult= new JPanel();
+		JPanel secondResult = new JPanel(new BorderLayout());
+		JPanel thirdResult= new JPanel(new BorderLayout());
+		JPanel fourthResult= new JPanel(new BorderLayout());
+		JPanel fifthResult= new JPanel(new BorderLayout());
+		JPanel sixthResult= new JPanel(new BorderLayout());
 		JPanel mainPanel = new JPanel(new GridLayout(3,2));
+		
 		
 		JLabel firstLabel;
 		JLabel secondLabel;
@@ -50,10 +62,17 @@ public class SearchBar{
 		firstResult.add(firstLabel,BorderLayout.NORTH);
 		firstResult.setVisible(true);
 		
-		JButton button1 = new JButton("View Movie");
-		button1.setSize(250, 75);
+		
+		JButton button1 = new JButton("View " + results[0].getTitle());
+		button1.setSize(50, 10);
 		button1.setHorizontalAlignment(JButton.CENTER);
 		firstResult.add(button1, BorderLayout.SOUTH);
+		
+		button1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 		
 		secondResult.setSize(250, 75);
 		secondResult.setBorder(blackBorder);
@@ -61,9 +80,19 @@ public class SearchBar{
 		String movieResultTwo = String.format("%s (%s)", results[1].getTitle(), results[1].getYear());
 		secondLabel = new JLabel(movieResultTwo);
 		secondLabel.setHorizontalAlignment(JLabel.CENTER);
-		secondLabel.setVerticalAlignment(JLabel.CENTER);
-		secondResult.add(secondLabel);
+		secondResult.add(secondLabel,BorderLayout.NORTH);
 		secondResult.setVisible(true);
+		
+		JButton button2 = new JButton("View " + results[1].getTitle());
+		button2.setSize(250, 75);
+		button2.setHorizontalAlignment(JButton.CENTER);
+		secondResult.add(button2, BorderLayout.SOUTH);
+		
+		button2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 		
 		thirdResult.setSize(250, 75);
 		thirdResult.setBorder(blackBorder);
@@ -71,9 +100,19 @@ public class SearchBar{
 		String movieResultThree = String.format("%s (%s)", results[2].getTitle(), results[2].getYear());
 		thirdLabel = new JLabel(movieResultThree);
 		thirdLabel.setHorizontalAlignment(JLabel.CENTER);
-		thirdLabel.setVerticalAlignment(JLabel.CENTER);
-		thirdResult.add(thirdLabel);
+		thirdResult.add(thirdLabel,BorderLayout.NORTH);
 		thirdResult.setVisible(true);
+		
+		JButton button3 = new JButton("View " + results[2].getTitle());
+		button3.setSize(250, 75);
+		button3.setHorizontalAlignment(JButton.CENTER);
+		thirdResult.add(button3, BorderLayout.SOUTH);
+		
+		button3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 		
 		fourthResult.setSize(250, 75);
 		fourthResult.setBorder(blackBorder);
@@ -81,9 +120,19 @@ public class SearchBar{
 		String movieResultFour = String.format("%s (%s)", results[3].getTitle(), results[3].getYear());
 		fourthLabel = new JLabel(movieResultFour);
 		fourthLabel.setHorizontalAlignment(JLabel.CENTER);
-		fourthLabel.setVerticalAlignment(JLabel.CENTER);
-		fourthResult.add(fourthLabel);
+		fourthResult.add(fourthLabel,BorderLayout.NORTH);
 		fourthResult.setVisible(true);
+		
+		JButton button4 = new JButton("View " + results[3].getTitle());
+		button4.setSize(250, 75);
+		button4.setHorizontalAlignment(JButton.CENTER);
+		fourthResult.add(button4, BorderLayout.SOUTH);
+		
+		button4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 		
 		fifthResult.setSize(250, 75);
 		fifthResult.setBorder(blackBorder);
@@ -91,9 +140,19 @@ public class SearchBar{
 		String movieResultFive = String.format("%s (%s)", results[4].getTitle(), results[4].getYear());
 		fifthLabel = new JLabel(movieResultFive);
 		fifthLabel.setHorizontalAlignment(JLabel.CENTER);
-		fifthLabel.setVerticalAlignment(JLabel.CENTER);
-		fifthResult.add(fifthLabel);
+		fifthResult.add(fifthLabel,BorderLayout.NORTH);
 		fifthResult.setVisible(true);
+		
+		JButton button5 = new JButton("View " + results[4].getTitle());
+		button5.setSize(250, 75);
+		button5.setHorizontalAlignment(JButton.CENTER);
+		fifthResult.add(button5, BorderLayout.SOUTH);
+		
+		button5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 		
 		sixthResult.setSize(250, 75);
 		sixthResult.setBorder(blackBorder);
@@ -101,8 +160,18 @@ public class SearchBar{
 		String movieResultSix = String.format("%s (%s)", results[5].getTitle(), results[5].getYear());
 		sixthLabel = new JLabel(movieResultSix);
 		sixthLabel.setHorizontalAlignment(JLabel.CENTER);
-		sixthLabel.setVerticalAlignment(JLabel.CENTER);
-		sixthResult.add(sixthLabel);
+		sixthResult.add(sixthLabel,BorderLayout.NORTH);
 		sixthResult.setVisible(true);
+		
+		JButton button6 = new JButton("View " + results[5].getTitle());
+		button6.setSize(250, 75);
+		button6.setHorizontalAlignment(JButton.CENTER);
+		sixthResult.add(button6, BorderLayout.SOUTH);
+		
+		button6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
 	}
 }
