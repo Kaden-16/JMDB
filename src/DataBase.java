@@ -44,11 +44,8 @@ public class DataBase {
 
         for (int i = 0; i < 6; i++) {
             // System.out.println(tree.get("results").get(i).get("description").asText());
-            movieList[i] = new Movie(
-                    tree.get("results").get(i).get("title").asText(),
-                    tree.get("results").get(i).get("description").asText(),
-                    tree.get("results").get(i).get("id").asText());
-            
+            movieList[i] = SearchMovieByID(tree.get("results").get(i).get("id").asText());
+
         }
         return movieList;
     }

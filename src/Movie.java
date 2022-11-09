@@ -4,7 +4,7 @@ public class Movie {
     private String title;
     private int year;
     private String director;
-    private String poster;
+    private String imageLink;
     private Actor[] actorList;
     private String imDbRating;
     // Might not be able to do it
@@ -12,30 +12,13 @@ public class Movie {
     private String id;
     private String plot;
 
-    public Movie(String title, String description, String id) {
-        this.title = title;
-        String answer;
-        if (description.contains("(")) {
-            answer = description.substring(description.indexOf("(") + 1,
-                    description.indexOf(")"));
-        } else {
-            answer = description.substring(0, 4).trim();
-        }
-        try {
-            this.year = Integer.parseInt(answer);
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
-        }
-        this.id = id;
-    }
-
     public Movie(String title, String director, String id, String poster,
             Actor[] actorList, String imDbRating, String movieRating,
             String year, String plot) {
         this.title = title;
         this.director = director;
         this.id = id;
-        this.poster = poster;
+        this.imageLink = poster;
         this.actorList = actorList;
         this.imDbRating = imDbRating;
         this.movieRating = movieRating;
@@ -56,7 +39,7 @@ public class Movie {
     }
 
     public String getPoster() {
-        return poster;
+        return imageLink;
     }
 
     public Actor[] getActorList() {
