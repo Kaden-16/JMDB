@@ -67,7 +67,6 @@ public class DataBase {
 
         JsonNode tree = map.readTree(in);
 
-        System.out.println(tree.toPrettyString());
 
         String title = tree.get("title").asText();
         String ID = tree.get("id").asText();
