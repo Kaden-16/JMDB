@@ -23,7 +23,7 @@ public class MainGUI {
     public MainGUI() {
         frame = new JFrame();
         searchPanel();
-       
+       // 
         welcome = new JPanel();
         welcome.setLayout(new GridBagLayout());
         welcome.setBounds(panel1.getX(), panel1.getY(), frame.HEIGHT, frame.WIDTH);
