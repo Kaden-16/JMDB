@@ -4,15 +4,6 @@ import org.junit.jupiter.api.Test;
 
 public class DataBaseTest {
 
-    @Test
-    public void SearchMovieTest() throws Exception {
-        Movie[] test = DataBase.SearchMovie("Star Wars: Episode IV");
-        int i = 0;
-        assertEquals(test[i].getTitle(), "Star Wars: Episode IV - A New Hope");
-        assertEquals(test[i].getYear(), 1977);
-        assertEquals(test[i].getID(), "tt0076759");
-
-    }
 
     @Test
     public void SearchMovieByIDTest() throws Exception {

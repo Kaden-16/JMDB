@@ -42,6 +42,10 @@ public class Movie {
         return imageLink;
     }
 
+    public String getPlot() {
+        return plot;
+    }
+
     public Actor[] getActorList() {
         return actorList;
     }
