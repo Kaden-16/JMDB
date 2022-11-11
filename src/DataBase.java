@@ -40,7 +40,7 @@ public class DataBase {
         //System.out.println(tree.toPrettyString());
 
         for (int i = 0; i < 6; i++) {
-             System.out.println(tree.get("results").get(i).get("description").asText());
+            //System.out.println(tree.get("results").get(i).get("description").asText());
             movieList[i] = SearchMovieByID(tree.get("results").get(i).get("id").asText());
 
         }
