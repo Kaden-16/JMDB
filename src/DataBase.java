@@ -30,8 +30,8 @@ public class DataBase {
         URL oracle = new URL(
                 "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/" + title);
 
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(oracle.openStream()));
+        InputStream in = oracle.openStream();
+
 
         ObjectMapper map = new ObjectMapper();
 
