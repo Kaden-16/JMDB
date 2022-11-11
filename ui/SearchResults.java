@@ -1,29 +1,19 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.net.URL;
-import java.nio.file.Paths;
+import java.net.MalformedURLException;
 
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-public class SearchBar{
+public class SearchResults {
 
 	
-	public static void showSearchMovies(Movie[] results, JFrame frame) {
+	public static JPanel showSearchResults(Movie[] results) {
+
 		JPanel firstResult = new JPanel(new BorderLayout());
 		JPanel secondResult = new JPanel(new BorderLayout());
 		JPanel thirdResult= new JPanel(new BorderLayout());
@@ -42,7 +32,6 @@ public class SearchBar{
 		Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 		
 		Color purple = new Color(181,153,206);
-		frame.add(mainPanel);
 		
 		mainPanel.add(firstResult);
 		mainPanel.add(secondResult);
@@ -68,9 +57,11 @@ public class SearchBar{
 		button1.setHorizontalAlignment(JButton.CENTER);
 		firstResult.add(button1, BorderLayout.SOUTH);
 		
-		button1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+		button1.addActionListener(e -> {
+			try {
+				MainGUI.changePanel(MovieDisplay.displayMovie(results[0]));
+			} catch (MalformedURLException ex) {
+				throw new RuntimeException(ex);
 			}
 		});
 		
@@ -88,9 +79,11 @@ public class SearchBar{
 		button2.setHorizontalAlignment(JButton.CENTER);
 		secondResult.add(button2, BorderLayout.SOUTH);
 		
-		button2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+		button2.addActionListener(e -> {
+			try {
+				MainGUI.changePanel(MovieDisplay.displayMovie(results[1]));
+			} catch (MalformedURLException ex) {
+				throw new RuntimeException(ex);
 			}
 		});
 		
@@ -108,9 +101,11 @@ public class SearchBar{
 		button3.setHorizontalAlignment(JButton.CENTER);
 		thirdResult.add(button3, BorderLayout.SOUTH);
 		
-		button3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+		button3.addActionListener(e -> {
+			try {
+				MainGUI.changePanel(MovieDisplay.displayMovie(results[2]));
+			} catch (MalformedURLException ex) {
+				throw new RuntimeException(ex);
 			}
 		});
 		
@@ -128,9 +123,11 @@ public class SearchBar{
 		button4.setHorizontalAlignment(JButton.CENTER);
 		fourthResult.add(button4, BorderLayout.SOUTH);
 		
-		button4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+		button4.addActionListener(e -> {
+			try {
+				MainGUI.changePanel(MovieDisplay.displayMovie(results[3]));
+			} catch (MalformedURLException ex) {
+				throw new RuntimeException(ex);
 			}
 		});
 		
@@ -148,9 +145,11 @@ public class SearchBar{
 		button5.setHorizontalAlignment(JButton.CENTER);
 		fifthResult.add(button5, BorderLayout.SOUTH);
 		
-		button5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+		button5.addActionListener(e -> {
+			try {
+				MainGUI.changePanel(MovieDisplay.displayMovie(results[4]));
+			} catch (MalformedURLException ex) {
+				throw new RuntimeException(ex);
 			}
 		});
 		
@@ -168,10 +167,14 @@ public class SearchBar{
 		button6.setHorizontalAlignment(JButton.CENTER);
 		sixthResult.add(button6, BorderLayout.SOUTH);
 		
-		button6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+		button6.addActionListener(e -> {
+			try {
+				MainGUI.changePanel(MovieDisplay.displayMovie(results[6]));
+			} catch (MalformedURLException ex) {
+				throw new RuntimeException(ex);
 			}
 		});
+
+		return mainPanel;
 	}
 }

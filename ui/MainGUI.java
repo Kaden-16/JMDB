@@ -7,47 +7,47 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-
 import javax.swing.*;
 
 
 public class MainGUI {
-    private JFrame frame;
+    public static JFrame frame;
+    public static Dimension screenSize;
+    private static JPanel currentPanel;
     private JTextField searchText;
-    private JPanel panel1;
-    JPanel welcome;
+    private JPanel searchBar;
+
 
 
     public MainGUI() {
         frame = new JFrame();
-        searchPanel();
-       // 
-        welcome = new JPanel();
-        welcome.setLayout(new GridBagLayout());
-        welcome.setBounds(panel1.getX(), panel1.getY(), frame.HEIGHT, frame.WIDTH);
-        frame.add(welcome);
-        welcome.setBackground(new Color(69, 0, 132));
-        JLabel welcomeLabel = new JLabel("JMU IMDB");
-        welcomeLabel.setForeground(Color.white);
-        welcomeLabel.setFont(new Font("Amazon Ember", Font.BOLD, 50));
-        welcome.add(welcomeLabel); 
+        frame.add(searchPanel(), BorderLayout.NORTH);
+        currentPanel = welcomePage();
+        frame.add(currentPanel);
+
         display();
+    }
+
+    public static void changePanel(JPanel displayMovie) {
+        frame.remove(currentPanel);
+        currentPanel = displayMovie;
+        frame.add(currentPanel);
+        frame.revalidate();
+        frame.repaint();
     }
 
     private void display() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize(screenSize.width, screenSize.height);
         frame.setVisible(true);
     }
     
     
     private JPanel searchPanel() {
-      panel1 = new JPanel();
-      frame.add(panel1, BorderLayout.NORTH);
+      searchBar = new JPanel();
       JLabel label = new JLabel("Search");
       label.setFont(new Font("Sherif", Font.PLAIN, 17));
       searchText = new JTextField(20);
@@ -58,33 +58,43 @@ public class MainGUI {
       b.setAction(searchAction);
       Image icon = (new ImageIcon("mag.png")).getImage().getScaledInstance(b.getWidth(), b.getHeight(), Image.SCALE_SMOOTH);
       b.setIcon(new ImageIcon(icon));
-      panel1.setVisible(true);
-      panel1.setBackground(new Color(255, 243, 109));
-      panel1.add(label).setVisible(true);
-      panel1.add(searchText).setVisible(true);
-      panel1.add(b).setVisible(true);
-      return panel1;
+      searchBar.setVisible(true);
+      searchBar.setBackground(new Color(255, 243, 109));
+      searchBar.add(label).setVisible(true);
+      searchBar.add(searchText).setVisible(true);
+      searchBar.add(b).setVisible(true);
+      return searchBar;
+    }
+
+    private JPanel welcomePage() {
+        JLabel welcomeLabel = new JLabel("JMU IMDB");
+        welcomeLabel.setForeground(Color.white);
+        welcomeLabel.setFont(new Font("Amazon Ember", Font.BOLD, 50));
+
+        JPanel welcome = new JPanel();
+        welcome.setLayout(new GridBagLayout());
+        welcome.setBounds(searchBar.getX(), searchBar.getY(), frame.WIDTH, frame.HEIGHT);
+        welcome.setBackground(new Color(69, 0, 132));
+        welcome.add(welcomeLabel);
+        welcome.setName("WELCOME_PAGE");
+
+        return welcome;
     }
 
     Action searchAction = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            try
-            {
-              welcome.setVisible(false);
-                if (searchText != null) {
-                    SearchBar.showSearchMovies(DataBase.SearchMovie(searchText.getText()), frame);
-                }
+            try {
+                changePanel(SearchResults.showSearchResults(DataBase.SearchMovie(searchText.getText())));
             }
-            catch (IOException e1)
-            {
+            catch (IOException e1) {
                 e1.printStackTrace();
             }
         }
     };
     
-    public static void main(String[] args) throws IOException {
-        MainGUI test = new MainGUI();
+    public static void main(String[] args) {
+        new MainGUI();
     }
 
 }
