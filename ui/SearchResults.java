@@ -169,7 +169,7 @@ public class SearchResults {
 		
 		button6.addActionListener(e -> {
 			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(results[6]));
+				MainGUI.changePanel(MovieDisplay.displayMovie(results[5]));
 			} catch (MalformedURLException ex) {
 				throw new RuntimeException(ex);
 			}
