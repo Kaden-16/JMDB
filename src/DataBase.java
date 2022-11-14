@@ -25,7 +25,7 @@ public class DataBase {
      * @throws IOException
      */
     public static Movie[] SearchMovie(String title) throws IOException {
-        Movie[] movieList = new Movie[6];
+        Movie[] movieList = new Movie[10];
 
         if (title.contains(" ")) {
             title = title.replace(" ", "%20");
@@ -40,7 +40,7 @@ public class DataBase {
 
         JsonNode tree = map.readTree(in);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 10; i++) {
             // System.out.println(tree.get("results").get(i).get("description").asText());
             try {
                 movieList[i] = SearchMovieByID(
