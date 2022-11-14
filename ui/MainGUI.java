@@ -63,6 +63,10 @@ public class MainGUI {
       searchBar.add(label).setVisible(true);
       searchBar.add(searchText).setVisible(true);
       searchBar.add(b).setVisible(true);
+      
+      searchBar.add(new JLabel("Watch List"));
+      JComboBox wl = DropDownList.dropDown();
+      searchBar.add(wl);
       return searchBar;
     }
 
