@@ -6,6 +6,8 @@ import java.net.URL;
 
 public class MovieDisplay {
 
+    private static final double imageScale = 0.65;
+
     public static JPanel displayMovie(Movie movie) throws MalformedURLException {
         FlowLayout layout = new FlowLayout();
         layout.setHgap(40);
@@ -22,7 +24,7 @@ public class MovieDisplay {
         JLabel poster = new JLabel();
         URL posterLink = new URL(movie.getPoster());
         ImageIcon posterImage = new ImageIcon(posterLink);
-        poster.setIcon(new ImageIcon(posterImage.getImage().getScaledInstance((int) (posterImage.getIconWidth() * 0.5), (int) (posterImage.getIconHeight() * 0.5), Image.SCALE_SMOOTH)));
+        poster.setIcon(new ImageIcon(normalizeImage(posterImage)));
         poster.setHorizontalAlignment(SwingConstants.TRAILING);
         posterPanel.add(poster);
 
@@ -55,5 +57,16 @@ public class MovieDisplay {
 
 
         return contentPane;
+    }
+
+    private static Image normalizeImage(ImageIcon image) {
+
+        Dimension dimensions = MainGUI.screenSize;
+        double idealHeight = dimensions.height * imageScale;
+        double idealWidth = (idealHeight / image.getIconHeight()) * image.getIconWidth();
+        System.out.println(dimensions);
+        System.out.println(idealWidth + " " + idealHeight);
+
+        return image.getImage().getScaledInstance((int) idealWidth, (int) idealHeight, Image.SCALE_SMOOTH);
     }
 }
