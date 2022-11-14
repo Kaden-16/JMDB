@@ -27,21 +27,27 @@ public class DataBase {
     public static Movie[] SearchMovie(String title) throws IOException {
         Movie[] movieList = new Movie[6];
 
+        if (title.contains(" ")) {
+            title = title.replace(" ", "%20");
+        }
+
         URL oracle = new URL(
                 "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/" + title);
 
         InputStream in = oracle.openStream();
 
-
         ObjectMapper map = new ObjectMapper();
 
         JsonNode tree = map.readTree(in);
 
-        //System.out.println(tree.toPrettyString());
-
         for (int i = 0; i < 6; i++) {
-            //System.out.println(tree.get("results").get(i).get("description").asText());
-            movieList[i] = SearchMovieByID(tree.get("results").get(i).get("id").asText());
+            // System.out.println(tree.get("results").get(i).get("description").asText());
+            try {
+                movieList[i] = SearchMovieByID(
+                        tree.get("results").get(i).get("id").asText());
+            } catch (NullPointerException e) {
+                i--;
+            }
 
         }
         return movieList;
@@ -64,7 +70,6 @@ public class DataBase {
 
         JsonNode tree = map.readTree(in);
 
-
         String title = tree.get("title").asText();
         String ID = tree.get("id").asText();
         String director = tree.get("directors").asText();
@@ -76,15 +81,19 @@ public class DataBase {
 
         Actor[] actorList = new Actor[5];
 
-        for (int i = 0; i < actorList.length; i++) {
-            String name = tree.get("actorList").get(i).get("name").asText();
-            String id1 = tree.get("actorList").get(i).get("id").asText();
-            String image1 = tree.get("actorList").get(i).get("image").asText();
-            String charecter = tree.get("actorList").get(i).get(
-                    "asCharacter").asText();
-            actorList[i] = new Actor(name, id1, image1, charecter);
-            // System.out.println(actorList[i]);
-        }
+//        for (int i = 0; i <= 4; i++) {
+//
+//            String name = tree.get("actorList").get(i).get("name").asText();
+//            String id1 = tree.get("actorList").get(i).get("id").asText();
+//            String image1 = tree.get("actorList").get(i).get("image").asText();
+//            String charecter = tree.get("actorList").get(i).get(
+//                    "asCharacter").asText();
+//            actorList[i] = new Actor(name, id1, image1, charecter);
+//            
+//            System.out.println(actorList[0].getName());
+//
+//            // System.out.println(actorList[i]);
+//        }
 
         Movie finalMovie = new Movie(title, director, ID, image, actorList,
                 imDbRating, contentRating, year, plot);

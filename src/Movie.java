@@ -23,10 +23,12 @@ public class Movie {
         this.imDbRating = imDbRating;
         this.movieRating = movieRating;
         this.plot = plot;
-        try {
-            this.year = Integer.parseUnsignedInt(year);
-        } catch (NumberFormatException ex) {
-            ex.printStackTrace();
+        if (year != "null") {
+            try {
+                this.year = Integer.parseUnsignedInt(year);
+            } catch (NumberFormatException ex) {
+                this.year = 0;
+            }
         }
     }
 
@@ -65,6 +67,5 @@ public class Movie {
     public int getYear() {
         return year;
     }
-
 
 }
