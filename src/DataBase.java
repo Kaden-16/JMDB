@@ -40,7 +40,7 @@ public class DataBase {
 
         JsonNode tree = map.readTree(in);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 6; i++) {
             // System.out.println(tree.get("results").get(i).get("description").asText());
             try {
                 movieList[i] = SearchMovieByID(
@@ -81,7 +81,7 @@ public class DataBase {
 
         Actor[] actorList = new Actor[5];
 
-//        for (int i = 0; i <= 4; i++) {
+//        for (int i = 0; i < 1; i++) {
 //
 //            String name = tree.get("actorList").get(i).get("name").asText();
 //            String id1 = tree.get("actorList").get(i).get("id").asText();
