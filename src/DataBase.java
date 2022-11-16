@@ -136,26 +136,26 @@ public class DataBase {
         return actorList;
     }
 
-    public static Actor SearchActorByID(String id) throws IOException {
-        Actor actor = null;
-        URL oracle = new URL(
-                "https://imdb-api.com/en/API/SearchName/k_mcx0w8kk/" + id);
-
-        InputStream in = oracle.openStream();
-
-        ObjectMapper map = new ObjectMapper();
-
-        JsonNode tree = map.readTree(in);
-
-        // System.out.println(tree.get("results").get(i).get("description").asText());
-        // Suggested Actors
-        actor = new Actor(tree.get("results").get(i).get("title").asText(),
-                tree.get("results").get(i).get("id").asText(),
-                tree.get("results").get(i).get("image").asText(),
-                tree.get("results").get(i).get("description").asText());
-
-        return actor;
-    }
+//    public static Actor SearchActorByID(String id) throws IOException {
+//        Actor actor = null;
+//        URL oracle = new URL(
+//                "https://imdb-api.com/en/API/SearchName/k_mcx0w8kk/" + id);
+//
+//        InputStream in = oracle.openStream();
+//
+//        ObjectMapper map = new ObjectMapper();
+//
+//        JsonNode tree = map.readTree(in);
+//
+//        // System.out.println(tree.get("results").get(i).get("description").asText());
+//        // Suggested Actors
+//        actor = new Actor(tree.get("results").get("title").asText(),
+//                tree.get("results").get("id").asText(),
+//                tree.get("results").get("image").asText(),
+//                tree.get("results").get("description").asText());
+//
+//        return actor;
+//    }
 
 //    public static JPanel MediaPlayer(String id) {
 //        JPanel panel = new JPanel();
