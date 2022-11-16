@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.io.IOException;
 import java.net.MalformedURLException;
 
 import javax.swing.BorderFactory;
@@ -12,7 +13,7 @@ import javax.swing.border.Border;
 public class SearchResults {
 
 	
-	public static JPanel showSearchResults(Movie[] results) {
+	public static JPanel showSearchResults(Movie[] results) throws MalformedURLException {
 
 		JPanel firstResult = new JPanel(new BorderLayout());
 		JPanel secondResult = new JPanel(new BorderLayout());
@@ -59,9 +60,10 @@ public class SearchResults {
 		
 		button1.addActionListener(e -> {
 			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(results[0]));
-			} catch (MalformedURLException ex) {
-				throw new RuntimeException(ex);
+				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[0].getID())));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		});
 		
@@ -81,9 +83,10 @@ public class SearchResults {
 		
 		button2.addActionListener(e -> {
 			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(results[1]));
-			} catch (MalformedURLException ex) {
-				throw new RuntimeException(ex);
+				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[1].getID())));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		});
 		
@@ -103,9 +106,10 @@ public class SearchResults {
 		
 		button3.addActionListener(e -> {
 			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(results[2]));
-			} catch (MalformedURLException ex) {
-				throw new RuntimeException(ex);
+				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[2].getID())));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		});
 		
@@ -123,11 +127,12 @@ public class SearchResults {
 		button4.setHorizontalAlignment(JButton.CENTER);
 		fourthResult.add(button4, BorderLayout.SOUTH);
 		
-		button4.addActionListener(e -> {
+		button3.addActionListener(e -> {
 			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(results[3]));
-			} catch (MalformedURLException ex) {
-				throw new RuntimeException(ex);
+				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[3].getID())));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		});
 		
@@ -147,9 +152,10 @@ public class SearchResults {
 		
 		button5.addActionListener(e -> {
 			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(results[4]));
-			} catch (MalformedURLException ex) {
-				throw new RuntimeException(ex);
+				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[4].getID())));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		});
 		
@@ -169,9 +175,10 @@ public class SearchResults {
 		
 		button6.addActionListener(e -> {
 			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(results[5]));
-			} catch (MalformedURLException ex) {
-				throw new RuntimeException(ex);
+				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[5].getID())));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		});
 
