@@ -25,7 +25,13 @@ public class Movie {
         this.plot = plot;
         if (year != "null") {
             try {
-                this.year = Integer.parseUnsignedInt(year);
+                if (year.contains("(")) {
+                    this.year = Integer.parseUnsignedInt(year.substring(
+                            year.indexOf("("), year.indexOf(")")));
+
+                } else {
+                    this.year = Integer.parseUnsignedInt(year.substring(0,4));
+                }
             } catch (NumberFormatException ex) {
                 this.year = 0;
             }

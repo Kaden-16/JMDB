@@ -41,12 +41,13 @@ public class DataBase {
         JsonNode tree = map.readTree(in);
 
         for (int i = 0; i < 6; i++) {
-            System.out.println(tree.get("results").toPrettyString());
             try {
                 movieList[i] = new Movie(
                         tree.get("results").get(i).get("title").asText(), null,
-                        tree.get("results").get(i).get("id").asText(), title,
-                        null, title, title, title, title);
+                        tree.get("results").get(i).get("id").asText(), null,
+                        null, null, null,
+                        tree.get("results").get(i).get("description").asText(),
+                        null);
             } catch (NullPointerException e) {
                 i--;
             }
