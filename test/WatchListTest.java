@@ -20,6 +20,14 @@ public class WatchListTest {
     top.setBackground(Color.GREEN);
     frame.add(top, BorderLayout.NORTH);
     
+    
+    // add watch list to top
+    top.add(new JLabel("Watch List"));
+    JComboBox wl = DropDownList.dropDown();
+    DropDownList.add("Star Wars");
+    top.add(wl);
+    
+    
     JPanel bottom = new JPanel();
     bottom.setBackground(Color.CYAN);
     frame.add(bottom, BorderLayout.SOUTH);
@@ -31,12 +39,7 @@ public class WatchListTest {
     bottom.add(edit2.getButton());
     EditWatchList edit3 = new EditWatchList("Spider Man");
     bottom.add(edit3.getButton());
-    
-    // add watch list to top
-    top.add(new JLabel("Watch List"));
-    JComboBox wl = DropDownList.dropDown();
-    top.add(wl);
-    
+
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setTitle("Watch List Drop Down");
     frame.setVisible(true);

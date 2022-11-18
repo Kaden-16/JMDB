@@ -14,6 +14,9 @@ public class DropDownList {
     public static JComboBox<String> dropDown() {
         return movies;
     }
+    public static DefaultComboBoxModel<String> movieList() {
+        return movieList;
+    }
 
     public static void add(String title) {
         movieList.addElement(title);

@@ -4,15 +4,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class EditWatchList extends JButton {
-    private int clickCount = 0;
+    private int clickCount;
     private JButton editButton;
-    private String title;
 
     public EditWatchList(String title) {
-        this.editButton = new JButton("Add to Watch List");
-        this.title = title;
+        if (DropDownList.movieList().getIndexOf(title) == -1) {
+            this.editButton = new JButton("Add to Watch List");
+            clickCount = 0;
+        } else {
+            this.editButton = new JButton("Remove From Watch List");
+            clickCount = 1;
+        }
         editButton.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 clickCount++;
@@ -23,11 +27,11 @@ public class EditWatchList extends JButton {
                     DropDownList.remove(title);
                     editButton.setText("Add to Watch List");
                 }
-                
+
             }
         });
     }
-    
+
     public JButton getButton() {
         return editButton;
     }
