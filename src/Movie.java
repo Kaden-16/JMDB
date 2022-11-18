@@ -23,11 +23,12 @@ public class Movie {
         this.imDbRating = imDbRating;
         this.movieRating = movieRating;
         this.plot = plot;
-        if (year != "null") {
+        
+        if (year != "null" && !year.isEmpty()) {
             try {
                 if (year.contains("(")) {
                     this.year = Integer.parseUnsignedInt(year.substring(
-                            year.indexOf("("), year.indexOf(")")));
+                            year.indexOf("(") + 1, year.indexOf(")")));
 
                 } else {
                     this.year = Integer.parseUnsignedInt(year.substring(0,4));
