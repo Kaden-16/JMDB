@@ -19,7 +19,7 @@ public class SearchBarTest {
         //test[1] = fake2;
         //test[2] = fake3;
 
-        SearchResults.showSearchResults(test);
+        //SearchResults.showSearchResults(test);
     }
 
 }

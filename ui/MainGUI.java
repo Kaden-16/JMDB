@@ -25,7 +25,6 @@ public class MainGUI {
         frame.add(searchPanel(), BorderLayout.NORTH);
         currentPanel = welcomePage();
         frame.add(currentPanel);
-
         display();
     }
 
