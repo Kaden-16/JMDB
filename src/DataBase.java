@@ -5,7 +5,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * DataBase class Accesses the IMDB database with specific inputs given by the
@@ -25,14 +31,29 @@ public class DataBase {
      * @throws IOException
      */
     public static Movie[] SearchMovie(String title) throws IOException {
+        
+        if(containsIllegals(title)) {
+            JFrame jFrame = new JFrame();
+            
+            JOptionPane.showMessageDialog(jFrame, "Please dont enter an illegal charecter to break the search!\n"
+                    + "The Program will now exit");
+            System.exit(0);
+        }
+        
         Movie[] movieList = new Movie[10];
 
-        if (title.contains(" ")) {
-            title = title.replace(" ", "%20");
+//        if (title.contains(" ") ) {
+//            title = title.replace(" ", "%20");
+//        }
+//        
+        URL oracle = null;
+        try {
+            
+            oracle = new URL(
+                    "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/"
+                            + title);
+        } catch (MalformedURLException e) {
         }
-
-        URL oracle = new URL(
-                "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/" + title);
 
         InputStream in = oracle.openStream();
 
@@ -40,16 +61,17 @@ public class DataBase {
 
         JsonNode tree = map.readTree(in);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6;) {
             try {
+             
                 movieList[i] = new Movie(
                         tree.get("results").get(i).get("title").asText(), null,
                         tree.get("results").get(i).get("id").asText(), null,
                         null, null, null,
                         tree.get("results").get(i).get("description").asText(),
                         null);
+                i++;
             } catch (NullPointerException e) {
-                i--;
             }
 
         }
@@ -160,18 +182,12 @@ public class DataBase {
 //        return actor;
 //    }
 
-//    public static JPanel MediaPlayer(String id) {
-//        JPanel panel = new JPanel();
-//        // file you want to play
-//        URL mediaURL = new URL(
-//                "https://imdb-api.com/en/API/Trailer/k_mcx0w8kk/" + id);
-//        // create the media player with the media url
-//        VideoPlayer mediaPlayer = Manager.createRealizedPlayer(mediaURL);
-//        // get components for video and playback controls
-//        Component video = mediaPlayer.getVisualComponent();
-//        Component controls = mediaPlayer.getControlPanelComponent();
-//        panel.add(video, BorderLayout.CENTER);
-//        panel.add(controls, BorderLayout.SOUTH);
-//    }
 
+    
+    public static boolean containsIllegals(String toExamine) {
+        Pattern pattern = Pattern.compile("[/~#@*+%{}<>\\[\\]|\"\\_^]");
+        Matcher matcher = pattern.matcher(toExamine);
+        return matcher.find();
+    }
+    
 }
