@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.JsonNode;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
@@ -63,7 +64,7 @@ public class DataBase {
 
         for (int i = 0; i < 6;) {
             try {
-             
+                
                 movieList[i] = new Movie(
                         tree.get("results").get(i).get("title").asText(), null,
                         tree.get("results").get(i).get("id").asText(), null,
@@ -72,6 +73,13 @@ public class DataBase {
                         null);
                 i++;
             } catch (NullPointerException e) {
+                i++;
+                movieList[i] = new Movie(
+                        tree.get("results").get(i).get("title").asText(), "",
+                        tree.get("results").get(i).get("id").asText(), "",
+                        null, "", "",
+                        tree.get("results").get(i).get("description").asText(),
+                        null);
             }
 
         }
