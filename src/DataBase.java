@@ -43,17 +43,19 @@ public class DataBase {
         
         Movie[] movieList = new Movie[10];
 
-//        if (title.contains(" ") ) {
-//            title = title.replace(" ", "%20");
-//        }
-//        
         URL oracle = null;
         try {
-            
+          if (title.contains(" ") ) {
+              title = title.replace(" ", "%20");
+          }
             oracle = new URL(
                     "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/"
                             + title);
         } catch (MalformedURLException e) {
+            JFrame jFrame = new JFrame();
+
+            JOptionPane.showMessageDialog(jFrame, "Error Connecting to the API\n Exiting Now");
+            System.exit(0);
         }
 
         InputStream in = oracle.openStream();
@@ -61,7 +63,16 @@ public class DataBase {
         ObjectMapper map = new ObjectMapper();
 
         JsonNode tree = map.readTree(in);
-
+//        InputStream is = new URL(url).openStream();
+        
+//        try {
+//          BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+//          String jsonText = readAll(rd);
+//          JSONObject json = new JSONObject(jsonText);
+//          return json;
+//        } finally {
+//          is.close();
+//        }
         for (int i = 0; i < 6;) {
             try {
                 
@@ -81,7 +92,6 @@ public class DataBase {
                         tree.get("results").get(i).get("description").asText(),
                         null);
             }
-
         }
         return movieList;
     }
