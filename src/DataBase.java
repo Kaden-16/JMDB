@@ -31,7 +31,7 @@ public class DataBase {
      * @return the top 3 movies
      * @throws IOException
      */
-    public static Movie[] SearchMovie(String title) throws IOException {
+    public static Movie[] SearchMovie(String title) throws IOException  {
         
         if(containsIllegals(title)) {
             JFrame jFrame = new JFrame();
