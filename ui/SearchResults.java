@@ -127,7 +127,7 @@ public class SearchResults {
 		button4.setHorizontalAlignment(JButton.CENTER);
 		fourthResult.add(button4, BorderLayout.SOUTH);
 		
-		button3.addActionListener(e -> {
+		button4.addActionListener(e -> {
 			try {
 				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[3].getID())));
 			} catch (IOException e1) {
