@@ -48,9 +48,11 @@ public class DataBase {
           if (title.contains(" ") ) {
               title = title.replace(" ", "%20");
           }
-            oracle = new URL(
+          
+          oracle = new URL(
                     "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/"
                             + title);
+          
         } catch (MalformedURLException e) {
             JFrame jFrame = new JFrame();
 
