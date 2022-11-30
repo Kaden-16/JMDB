@@ -92,9 +92,7 @@ public class MainGUI {
     Action searchAction = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
-<<<<<<< Updated upstream
             new DataBaseWorker().execute();
-=======
             try {
             	temp = SearchResults.showSearchResults(DataBase.SearchMovie(searchText.getText()));
                 changePanel(temp);
@@ -102,7 +100,6 @@ public class MainGUI {
             catch (IOException e1) {
                 e1.printStackTrace();
             }
->>>>>>> Stashed changes
         }
     };
     Action backAction = new AbstractAction() {
@@ -141,3 +138,4 @@ public class MainGUI {
         }
     }
 }
+
