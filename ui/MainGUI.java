@@ -17,6 +17,7 @@ public class MainGUI {
     private static JPanel currentPanel;
     private JTextField searchText;
     private JPanel searchBar;
+    public static JButton backButton = new JButton("Previous Screen");
 
 
 
@@ -66,6 +67,10 @@ public class MainGUI {
       searchBar.add(new JLabel("Watch List"));
       JComboBox wl = DropDownList.dropDown();
       searchBar.add(wl);
+      backButton.setVisible(false);
+      backButton.setSize(50, 50);
+      searchBar.add(backButton);
+      backButton.setAction(backAction);
       return searchBar;
     }
 
@@ -83,11 +88,28 @@ public class MainGUI {
 
         return welcome;
     }
-
+    JPanel temp; 
     Action searchAction = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
+<<<<<<< Updated upstream
             new DataBaseWorker().execute();
+=======
+            try {
+            	temp = SearchResults.showSearchResults(DataBase.SearchMovie(searchText.getText()));
+                changePanel(temp);
+            }
+            catch (IOException e1) {
+                e1.printStackTrace();
+            }
+>>>>>>> Stashed changes
+        }
+    };
+    Action backAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        	changePanel(temp);
+        	MainGUI.backButton.setVisible(false);
         }
     };
     
