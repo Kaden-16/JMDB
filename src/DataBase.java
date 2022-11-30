@@ -49,7 +49,9 @@ public class DataBase {
 //        
         URL oracle = null;
         try {
-            
+          if (title.contains(" ") ) {
+              title = title.replace(" ", "%20");
+          }
             oracle = new URL(
                     "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/"
                             + title);
@@ -61,7 +63,7 @@ public class DataBase {
         ObjectMapper map = new ObjectMapper();
 
         JsonNode tree = map.readTree(in);
-        InputStream is = new URL(url).openStream();
+//        InputStream is = new URL(url).openStream();
         
 //        try {
 //          BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
@@ -90,7 +92,6 @@ public class DataBase {
                         tree.get("results").get(i).get("description").asText(),
                         null);
             }
-
         }
         return movieList;
     }
