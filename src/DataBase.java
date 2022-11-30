@@ -61,7 +61,16 @@ public class DataBase {
         ObjectMapper map = new ObjectMapper();
 
         JsonNode tree = map.readTree(in);
-
+        InputStream is = new URL(url).openStream();
+        
+//        try {
+//          BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+//          String jsonText = readAll(rd);
+//          JSONObject json = new JSONObject(jsonText);
+//          return json;
+//        } finally {
+//          is.close();
+//        }
         for (int i = 0; i < 6;) {
             try {
                 
