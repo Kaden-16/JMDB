@@ -54,7 +54,7 @@ public class DataBase {
         } catch (MalformedURLException e) {
             JFrame jFrame = new JFrame();
 
-            JOptionPane.showMessageDialog(jFrame, "Error Connecting to the API\n Exiting Now");
+            JOptionPane.showMessageDialog(jFrame, "Error Connecting to the API\n The Program will now exit");
             System.exit(0);
         }
 
