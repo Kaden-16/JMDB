@@ -55,7 +55,7 @@ public class MovieDisplay {
         paragraph.setColumns(40);
         infoPanel.add(paragraph);
 
-        EditWatchList button = new EditWatchList(movie.getTitle());
+        EditWatchList button = new EditWatchList(movie);
         button.setBorder(new EmptyBorder(20,0,0,0));
         infoPanel.add(button.getButton());
 
