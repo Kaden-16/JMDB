@@ -58,7 +58,7 @@ public class MainGUI {
       Image icon = (new ImageIcon("mag.png")).getImage().getScaledInstance(b.getWidth(), b.getHeight(), Image.SCALE_SMOOTH);
       b.setIcon(new ImageIcon(icon));
       searchBar.setVisible(true);
-      searchBar.setBackground(new Color(255, 243, 109));
+      searchBar.setBackground(new Color(203, 182, 119));
       searchBar.add(label).setVisible(true);
       searchBar.add(searchText).setVisible(true);
       searchBar.add(b).setVisible(true);
