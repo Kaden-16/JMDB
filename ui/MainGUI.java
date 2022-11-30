@@ -87,12 +87,7 @@ public class MainGUI {
     Action searchAction = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                changePanel(SearchResults.showSearchResults(DataBase.SearchMovie(searchText.getText())));
-            }
-            catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            new DataBaseWorker().execute();
         }
     };
     
@@ -100,4 +95,27 @@ public class MainGUI {
         new MainGUI();
     }
 
+    class DataBaseWorker extends SwingWorker<Boolean, Integer>
+    {
+        Movie[] movies;
+        protected Boolean doInBackground() throws Exception
+        {
+            // Do a time-consuming task.
+            movies = DataBase.SearchMovie(searchText.getText());
+            return true;
+
+        }
+
+        protected void done()
+        {
+            try
+            {
+                changePanel(SearchResults.showSearchResults(movies));
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
 }
