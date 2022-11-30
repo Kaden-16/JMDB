@@ -43,10 +43,6 @@ public class DataBase {
         
         Movie[] movieList = new Movie[10];
 
-//        if (title.contains(" ") ) {
-//            title = title.replace(" ", "%20");
-//        }
-//        
         URL oracle = null;
         try {
           if (title.contains(" ") ) {
@@ -56,6 +52,10 @@ public class DataBase {
                     "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/"
                             + title);
         } catch (MalformedURLException e) {
+            JFrame jFrame = new JFrame();
+
+            JOptionPane.showMessageDialog(jFrame, "Error Connecting to the API\n Exiting Now");
+            System.exit(0);
         }
 
         InputStream in = oracle.openStream();
