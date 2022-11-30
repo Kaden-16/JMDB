@@ -93,13 +93,6 @@ public class MainGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             new DataBaseWorker().execute();
-            try {
-            	temp = SearchResults.showSearchResults(DataBase.SearchMovie(searchText.getText()));
-                changePanel(temp);
-            }
-            catch (IOException e1) {
-                e1.printStackTrace();
-            }
         }
     };
     Action backAction = new AbstractAction() {
