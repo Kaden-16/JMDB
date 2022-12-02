@@ -33,10 +33,10 @@ public class DataBase {
      */
     public static Movie[] SearchMovie(String title) throws IOException  {
         
-        if(containsIllegals(title)) {
+        if(containsIllegals(title) || title == null || title.trim().isEmpty()) {
             JFrame jFrame = new JFrame();
             
-            JOptionPane.showMessageDialog(jFrame, "Please dont enter an illegal charecter to break the search!\n"
+            JOptionPane.showMessageDialog(jFrame, "Please enter valid search parameters!\n"
                     + "The Program will now exit");
             System.exit(0);
         }
@@ -210,4 +210,5 @@ public class DataBase {
         return matcher.find();
     }
     
+
 }
