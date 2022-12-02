@@ -17,8 +17,8 @@ public class MainGUI {
     private static JPanel currentPanel;
     private JTextField searchText;
     private JPanel searchBar;
-    public static JButton backButton = new JButton("Previous Screen");
-    public static JButton actorSearchButton = new JButton("Actor Search");
+    public static JButton backButton = new JButton();
+    public static JButton actorSearchButton = new JButton();
 
 
     public MainGUI() {
@@ -64,16 +64,22 @@ public class MainGUI {
       searchBar.add(searchText).setVisible(true);
       searchBar.add(b).setVisible(true);
       
-      searchBar.add(new JLabel("Watch List"));
+      JLabel watchListLabel = new JLabel("Watch List");
+      watchListLabel.setFont(new Font("Sherif", Font.PLAIN, 17));
+      searchBar.add(watchListLabel);
       JComboBox wl = DropDownList.dropDown();
       searchBar.add(wl);
       
+      
       searchBar.add(actorSearchButton);
       actorSearchButton.setAction(actorSearchAction);
+      actorSearchButton.setText("Author Search");
       
       backButton.setVisible(false);
       searchBar.add(backButton);
       backButton.setAction(backAction);
+      backButton.setText("Back");
+      
       return searchBar;
     }
 
@@ -91,6 +97,7 @@ public class MainGUI {
 
         return welcome;
     }
+    
     JPanel temp; 
     Action searchAction = new AbstractAction() {
         @Override
