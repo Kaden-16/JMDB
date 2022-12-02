@@ -18,7 +18,7 @@ public class MainGUI {
     private JTextField searchText;
     private JPanel searchBar;
     public static JButton backButton = new JButton("Previous Screen");
-
+    public static JButton actorSearchButton = new JButton("Actor Search");
 
 
     public MainGUI() {
@@ -67,6 +67,11 @@ public class MainGUI {
       searchBar.add(new JLabel("Watch List"));
       JComboBox wl = DropDownList.dropDown();
       searchBar.add(wl);
+      
+      actorSearchButton.setSize(50, 50);
+      searchBar.add(actorSearchButton);
+      actorSearchButton.setAction(actorSearchAction);
+      
       backButton.setVisible(false);
       backButton.setSize(50, 50);
       searchBar.add(backButton);
@@ -102,6 +107,22 @@ public class MainGUI {
         	MainGUI.backButton.setVisible(false);
         }
     };
+    
+    Action actorSearchAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        	try
+            {
+                changePanel(ActorSearchResults.showActorSearchResults(DataBase.SearchActor(searchText.getText())));
+            }
+            catch (Exception e1)
+            {
+                e1.printStackTrace();
+            }
+        
+        }
+    };
+    
     
     public static void main(String[] args) {
         new MainGUI();
