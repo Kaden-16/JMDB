@@ -52,7 +52,7 @@ public class MovieDisplay {
         paragraph.setText(movie.getPlot());
         paragraph.setFont(new Font("Arial", Font.PLAIN, 18));
         paragraph.setOpaque(false);
-        paragraph.setColumns(40);
+        paragraph.setColumns(30);
         infoPanel.add(paragraph);
 
         EditWatchList button = new EditWatchList(movie);
