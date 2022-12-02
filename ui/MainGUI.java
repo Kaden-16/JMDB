@@ -73,7 +73,7 @@ public class MainGUI {
       
       searchBar.add(actorSearchButton);
       actorSearchButton.setAction(actorSearchAction);
-      actorSearchButton.setText("Author Search");
+      actorSearchButton.setText("Actor Search");
       
       backButton.setVisible(false);
       searchBar.add(backButton);
