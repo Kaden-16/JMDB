@@ -19,17 +19,17 @@ public class ActorSearchResults {
 		JPanel secondResult = new JPanel(new BorderLayout());
 		JPanel thirdResult= new JPanel(new BorderLayout());
 		JPanel fourthResult= new JPanel(new BorderLayout());
-		JPanel fifthResult= new JPanel(new BorderLayout());
-		JPanel sixthResult= new JPanel(new BorderLayout());
-		JPanel mainPanel = new JPanel(new GridLayout(3,2));
+		//JPanel fifthResult= new JPanel(new BorderLayout());
+		//JPanel sixthResult= new JPanel(new BorderLayout());
+		JPanel mainPanel = new JPanel(new GridLayout(2,2));
 		
 		
 		JLabel firstLabel;
 		JLabel secondLabel;
 		JLabel thirdLabel;
 		JLabel fourthLabel;
-		JLabel fifthLabel;
-		JLabel sixthLabel;
+		//JLabel fifthLabel;
+		//JLabel sixthLabel;
 		Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 		
 		Color purple = new Color(181,153,206);
@@ -38,8 +38,8 @@ public class ActorSearchResults {
 		mainPanel.add(secondResult);
 		mainPanel.add(thirdResult);
 		mainPanel.add(fourthResult);
-		mainPanel.add(fifthResult);
-		mainPanel.add(sixthResult);
+		//mainPanel.add(fifthResult);
+		//mainPanel.add(sixthResult);
 		
 		
 		firstResult.setSize(250, 75);
@@ -142,55 +142,41 @@ public class ActorSearchResults {
 			//}
 		});
 		
-		fifthResult.setSize(250, 75);
-		fifthResult.setBorder(blackBorder);
-		fifthResult.setBackground(purple);
-		String actorResultFive = String.format("%s", results[0].getName());
-		fifthLabel = new JLabel(actorResultFive);
-		fifthLabel.setBackground(Color.blue);
-		fifthLabel.setHorizontalAlignment(JLabel.CENTER);
-		fifthResult.add(fifthLabel,BorderLayout.NORTH);
-		fifthResult.setVisible(true);
-		
-		
-		JButton button5 = new JButton("View " + results[0].getName());
-		button5.setSize(50, 10);
-		button5.setHorizontalAlignment(JButton.CENTER);
-		fifthResult.add(button5, BorderLayout.SOUTH);
-		
-		button5.addActionListener(e -> {
-			//try {
-				//MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[4].getID())));
-			//} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				//e1.printStackTrace();
-			//}
-		});
-		
-		sixthResult.setSize(250, 75);
-		sixthResult.setBorder(blackBorder);
-		sixthResult.setBackground(purple);
-		String actorResultSix = String.format("%s", results[0].getName());
-		sixthLabel = new JLabel(actorResultSix);
-		sixthLabel.setBackground(Color.blue);
-		sixthLabel.setHorizontalAlignment(JLabel.CENTER);
-		sixthResult.add(sixthLabel,BorderLayout.NORTH);
-		sixthResult.setVisible(true);
-		
-		
-		JButton button6 = new JButton("View " + results[0].getName());
-		button6.setSize(50, 10);
-		button6.setHorizontalAlignment(JButton.CENTER);
-		sixthResult.add(button6, BorderLayout.SOUTH);
-		
-		button6.addActionListener(e -> {
-			//try {
-				//MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[4].getID())));
-			//} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				//e1.printStackTrace();
-			//}
-		});
+		/*
+		 * fifthResult.setSize(250, 75); fifthResult.setBorder(blackBorder);
+		 * fifthResult.setBackground(purple); String actorResultFive =
+		 * String.format("%s", results[0].getName()); fifthLabel = new
+		 * JLabel(actorResultFive); fifthLabel.setBackground(Color.blue);
+		 * fifthLabel.setHorizontalAlignment(JLabel.CENTER);
+		 * fifthResult.add(fifthLabel,BorderLayout.NORTH); fifthResult.setVisible(true);
+		 * 
+		 * 
+		 * JButton button5 = new JButton("View " + results[0].getName());
+		 * button5.setSize(50, 10); button5.setHorizontalAlignment(JButton.CENTER);
+		 * fifthResult.add(button5, BorderLayout.SOUTH);
+		 * 
+		 * button5.addActionListener(e -> { //try {
+		 * //MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(
+		 * results[4].getID()))); //} catch (IOException e1) { // TODO Auto-generated
+		 * catch block //e1.printStackTrace(); //} });
+		 * 
+		 * sixthResult.setSize(250, 75); sixthResult.setBorder(blackBorder);
+		 * sixthResult.setBackground(purple); String actorResultSix =
+		 * String.format("%s", results[0].getName()); sixthLabel = new
+		 * JLabel(actorResultSix); sixthLabel.setBackground(Color.blue);
+		 * sixthLabel.setHorizontalAlignment(JLabel.CENTER);
+		 * sixthResult.add(sixthLabel,BorderLayout.NORTH); sixthResult.setVisible(true);
+		 * 
+		 * 
+		 * JButton button6 = new JButton("View " + results[0].getName());
+		 * button6.setSize(50, 10); button6.setHorizontalAlignment(JButton.CENTER);
+		 * sixthResult.add(button6, BorderLayout.SOUTH);
+		 * 
+		 * button6.addActionListener(e -> { //try {
+		 * //MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(
+		 * results[4].getID()))); //} catch (IOException e1) { // TODO Auto-generated
+		 * catch block //e1.printStackTrace(); //} });
+		 */
 
 		return mainPanel;
 	}

@@ -68,12 +68,10 @@ public class MainGUI {
       JComboBox wl = DropDownList.dropDown();
       searchBar.add(wl);
       
-      actorSearchButton.setSize(50, 50);
       searchBar.add(actorSearchButton);
       actorSearchButton.setAction(actorSearchAction);
       
       backButton.setVisible(false);
-      backButton.setSize(50, 50);
       searchBar.add(backButton);
       backButton.setAction(backAction);
       return searchBar;
@@ -113,7 +111,8 @@ public class MainGUI {
         public void actionPerformed(ActionEvent e) {
         	try
             {
-                changePanel(ActorSearchResults.showActorSearchResults(DataBase.SearchActor(searchText.getText())));
+        		temp = ActorSearchResults.showActorSearchResults(DataBase.SearchActor(searchText.getText()));
+                changePanel(temp);
             }
             catch (Exception e1)
             {
@@ -143,7 +142,8 @@ public class MainGUI {
         {
             try
             {
-                changePanel(SearchResults.showSearchResults(movies));
+            	temp = SearchResults.showSearchResults(movies);
+                changePanel(temp);
             }
             catch (Exception e)
             {
