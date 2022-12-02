@@ -64,16 +64,16 @@ public class MainGUI {
       searchBar.add(searchText).setVisible(true);
       searchBar.add(b).setVisible(true);
       
+      
+      searchBar.add(actorSearchButton);
+      actorSearchButton.setAction(actorSearchAction);
+      actorSearchButton.setText("Actor Search");
+      
       JLabel watchListLabel = new JLabel("Watch List");
       watchListLabel.setFont(new Font("Sherif", Font.PLAIN, 17));
       searchBar.add(watchListLabel);
       JComboBox wl = DropDownList.dropDown();
       searchBar.add(wl);
-      
-      
-      searchBar.add(actorSearchButton);
-      actorSearchButton.setAction(actorSearchAction);
-      actorSearchButton.setText("Actor Search");
       
       backButton.setVisible(false);
       searchBar.add(backButton);
