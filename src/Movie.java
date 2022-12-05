@@ -79,5 +79,4 @@ public class Movie {
     public String toString() {
         return title;
     }
-
 }
