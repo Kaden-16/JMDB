@@ -2,10 +2,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.regex.Matcher;
@@ -31,32 +29,36 @@ public class DataBase {
      * @return the top 3 movies
      * @throws IOException
      */
-    public static Movie[] SearchMovie(String title) throws IOException  {
-        
-        if(containsIllegals(title) || title == null || title.trim().isEmpty()) {
+    public static Movie[] SearchMovie(String title) throws IOException {
+
+        if (containsIllegals(title) || title == null
+                || title.trim().isEmpty()) {
             JFrame jFrame = new JFrame();
-            
-            JOptionPane.showMessageDialog(jFrame, "Please enter valid search parameters!\n"
-                    + "The Program will now exit");
-            System.exit(0);
+
+            JOptionPane.showMessageDialog(jFrame,
+                    "Please enter valid search parameters!\n"
+                            + "Please try again");
+            //            System.exit(0);
+
         }
-        
-        Movie[] movieList = new Movie[10];
+
+        Movie[] movieList = new Movie[15];
 
         URL oracle = null;
         try {
-          if (title.contains(" ") ) {
-              title = title.replace(" ", "%20");
-          }
-          
-          oracle = new URL(
+            if (title.contains(" ")) {
+                title = title.replace(" ", "%20");
+            }
+
+            oracle = new URL(
                     "https://imdb-api.com/en/API/SearchMovie/k_mcx0w8kk/"
                             + title);
-          
+
         } catch (MalformedURLException e) {
             JFrame jFrame = new JFrame();
 
-            JOptionPane.showMessageDialog(jFrame, "Error Connecting to the API\n The Program will now exit");
+            JOptionPane.showMessageDialog(jFrame,
+                    "Error Connecting to the API\n The Program will now exit");
             System.exit(0);
         }
 
@@ -66,7 +68,7 @@ public class DataBase {
 
         JsonNode tree = map.readTree(in);
 //        InputStream is = new URL(url).openStream();
-        
+
 //        try {
 //          BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 //          String jsonText = readAll(rd);
@@ -75,12 +77,13 @@ public class DataBase {
 //        } finally {
 //          is.close();
 //        }
-        for (int i = 0; i < 6;) {
+        for (int i = 0; i < 15;) {
             try {
-                
+
                 movieList[i] = new Movie(
                         tree.get("results").get(i).get("title").asText(), null,
-                        tree.get("results").get(i).get("id").asText(), null,
+                        tree.get("results").get(i).get("id").asText(), 
+                        tree.get("results").get(i).get("image").asText(),
                         null, null, null,
                         tree.get("results").get(i).get("description").asText(),
                         null);
@@ -89,8 +92,10 @@ public class DataBase {
                 i++;
                 movieList[i] = new Movie(
                         tree.get("results").get(i).get("title").asText(), "",
-                        tree.get("results").get(i).get("id").asText(), "",
-                        null, "", "",
+                        tree.get("results").get(i).get("id").asText(), 
+                        tree.get("results").get(i).get("image").asText()
+                        , null,
+                        "", "",
                         tree.get("results").get(i).get("description").asText(),
                         null);
             }
@@ -126,19 +131,18 @@ public class DataBase {
 
         Actor[] actorList = new Actor[5];
 
-//        for (int i = 0; i < 1; i++) {
-//
-//            String name = tree.get("actorList").get(i).get("name").asText();
-//            String id1 = tree.get("actorList").get(i).get("id").asText();
-//            String image1 = tree.get("actorList").get(i).get("image").asText();
-//            String charecter = tree.get("actorList").get(i).get(
-//                    "asCharacter").asText();
-//            actorList[i] = new Actor(name, id1, image1, charecter);
-//            
-//            System.out.println(actorList[0].getName());
-//
-//            // System.out.println(actorList[i]);
-//        }
+        for (int i = 0; i < 5; i++) {
+
+            String name = tree.get("actorList").get(i).get("name").asText();
+            String id1 = tree.get("actorList").get(i).get("id").asText();
+            String image1 = tree.get("actorList").get(i).get("image").asText();
+            String charecter = tree.get("actorList").get(i).get(
+                    "asCharacter").asText();
+            actorList[i] = new Actor(name, id1, image1, charecter);
+            
+
+            // System.out.println(actorList[i]);
+        }
 
         Movie finalMovie = new Movie(title, director, ID, image, actorList,
                 imDbRating, contentRating, year, plot);
@@ -202,13 +206,10 @@ public class DataBase {
 //        return actor;
 //    }
 
-
-    
     public static boolean containsIllegals(String toExamine) {
         Pattern pattern = Pattern.compile("[/~#@*+%{}<>\\[\\]|\"\\_^]");
         Matcher matcher = pattern.matcher(toExamine);
         return matcher.find();
     }
-    
 
 }
