@@ -6,7 +6,7 @@ import java.net.URL;
 
 public class MovieDisplay {
 
-    private static final double imageScale = 0.65;
+    private static final double imageScale = 0.5;
 
     public static JPanel displayMovie(Movie movie) throws MalformedURLException {
         FlowLayout layout = new FlowLayout();
