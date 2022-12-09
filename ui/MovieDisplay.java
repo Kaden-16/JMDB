@@ -38,7 +38,7 @@ public class MovieDisplay {
         infoPanel.add(titleLabel);
         titleLabel.setOpaque(false);
 
-        JLabel yearLabel = new JLabel(String.valueOf(movie.getYear()));
+        JLabel yearLabel = new JLabel("Release date: " + String.valueOf(movie.getYear()));
         yearLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         infoPanel.add(yearLabel);
         yearLabel.setOpaque(false);
