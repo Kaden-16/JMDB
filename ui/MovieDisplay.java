@@ -40,22 +40,22 @@ public class MovieDisplay {
         titleLabel.setOpaque(false);
 
         JLabel yearLabel = new JLabel("Release Date: " + String.valueOf(movie.getYear()));
-        yearLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        yearLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         infoPanel.add(yearLabel);
         yearLabel.setOpaque(false);
        
         JLabel Directors = new JLabel("Director: " + String.valueOf(movie.getDirector()));
-        Directors.setFont(new Font("Arial", Font.PLAIN, 20));
+        Directors.setFont(new Font("Arial", Font.PLAIN, 18));
         infoPanel.add(Directors);
         Directors.setOpaque(false);
         
         JLabel runTime = new JLabel("Run Time: " + String.valueOf(movie.getRunTime()));
-        runTime.setFont(new Font("Arial", Font.PLAIN, 20));
+        runTime.setFont(new Font("Arial", Font.PLAIN, 18));
         infoPanel.add(runTime);
         runTime.setOpaque(false);
         
         JLabel languages = new JLabel("Languages: " + String.valueOf(movie.getLanguages()));
-        languages.setFont(new Font("Arial", Font.PLAIN, 20));
+        languages.setFont(new Font("Arial", Font.PLAIN, 18));
         infoPanel.add(languages);
         languages.setOpaque(false);
         
@@ -66,7 +66,7 @@ public class MovieDisplay {
         paragraph.setWrapStyleWord(true);
         paragraph.setLineWrap(true);
         paragraph.setText("\n" + movie.getPlot() + "\n");
-        paragraph.setFont(new Font("Arial", Font.PLAIN, 20));
+        paragraph.setFont(new Font("Arial", Font.PLAIN, 18));
         paragraph.setOpaque(false);
         paragraph.setColumns(30);
         infoPanel.add(paragraph);
@@ -83,7 +83,7 @@ public class MovieDisplay {
               + "    2) " + String.valueOf(actorlist[1].getName()) + " (" + actorlist[1].getCharecter() + ")" +"\n"
               + "    3) " + String.valueOf(actorlist[2].getName()) + " (" + actorlist[2].getCharecter() + ")" + "\n"
               + "    4) " + String.valueOf(actorlist[3].getName()) + " (" + actorlist[3].getCharecter() + ")\n");
-        actorListLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        actorListLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         actorListLabel.setOpaque(false);
         actorListLabel.setColumns(30);
         infoPanel.add(actorListLabel);
@@ -91,27 +91,27 @@ public class MovieDisplay {
 
         
         JLabel ratingLabel = new JLabel("Content Rating: " + String.valueOf(movie.getMovieRating()));
-        ratingLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        ratingLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         infoPanel.add(ratingLabel);
         ratingLabel.setOpaque(false);
         
         JLabel imdbRating = new JLabel("IMDB Rating: " + String.valueOf(movie.getIMDBRating()) + "/10.0");
-        imdbRating.setFont(new Font("Arial", Font.PLAIN, 20));
+        imdbRating.setFont(new Font("Arial", Font.PLAIN, 18));
         infoPanel.add(imdbRating);
         imdbRating.setOpaque(false);
         
         JLabel genres = new JLabel("Genres: " + String.valueOf(movie.getGenres()));
-        genres.setFont(new Font("Arial", Font.PLAIN, 20));
+        genres.setFont(new Font("Arial", Font.PLAIN, 18));
         infoPanel.add(genres);
         genres.setOpaque(false);
         
         JLabel countries = new JLabel("Countries: " + String.valueOf(movie.getCountries()));
-        countries.setFont(new Font("Arial", Font.PLAIN, 20));
+        countries.setFont(new Font("Arial", Font.PLAIN, 18));
         infoPanel.add(countries);
         countries.setOpaque(false);
         
         JLabel awards = new JLabel("Awards: " + String.valueOf(movie.getAwards()));
-        awards.setFont(new Font("Arial", Font.PLAIN, 20));
+        awards.setFont(new Font("Arial", Font.PLAIN, 18));
         infoPanel.add(awards);
         awards.setOpaque(false);
         
