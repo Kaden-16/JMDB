@@ -20,10 +20,22 @@ public class Movie {
         this.id = id;
         this.imageLink = poster;
         this.actorList = actorList;
-        this.imDbRating = imDbRating;
-        this.movieRating = movieRating;
+
+        if (movieRating != "null") {
+            this.imDbRating = imDbRating;
+
+        } else {
+            this.imDbRating = "No IMDB Rating";
+        }
+
+        if (movieRating != "null") {
+            this.movieRating = movieRating;
+
+        } else {
+            this.movieRating = "Content rating is unknown at this time";
+        }
         this.plot = plot;
-        
+
         if (year != "null" && !year.isEmpty()) {
             try {
                 if (year.contains("(")) {
@@ -31,7 +43,7 @@ public class Movie {
                             year.indexOf("(") + 1, year.indexOf(")")));
 
                 } else {
-                    this.year = Integer.parseUnsignedInt(year.substring(0,4));
+                    this.year = Integer.parseUnsignedInt(year.substring(0, 4));
                 }
             } catch (NumberFormatException ex) {
                 this.year = 0;
@@ -74,7 +86,7 @@ public class Movie {
     public int getYear() {
         return year;
     }
-    
+
     @Override
     public String toString() {
         return title;
