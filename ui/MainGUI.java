@@ -16,9 +16,13 @@ public class MainGUI {
     public static Dimension screenSize;
     private static JPanel currentPanel;
     private JTextField searchText;
+    private JTextField searchText2;
+    private JTextField searchText3;
     private JPanel searchBar;
     public static JButton backButton = new JButton();
     public static JButton actorSearchButton = new JButton();
+    public static JButton invis = new JButton();
+    public static JButton inivs2 = new JButton();
 
 
     public MainGUI() {
@@ -48,6 +52,37 @@ public class MainGUI {
     
     private JPanel searchPanel() {
       searchBar = new JPanel();
+      
+      searchBar.add(invis);
+     // invis.setBackground(new Color(203, 182, 119));
+     // invis.setBorder(null);
+      
+      
+      backButton.setVisible(false);
+      searchBar.add(backButton);
+      backButton.setAction(backAction);
+      backButton.setText("Back");
+      backButton.setBounds(100, 100, 100, 100);
+      
+      
+      searchText3 = new JTextField(100);
+      searchText3.setColumns(10);
+      searchBar.add(searchText3);
+      searchText3.setBackground(new Color(203, 182, 119));
+      searchText3.setBorder(null);
+      searchText3.setEditable(false);
+      
+      searchText2 = new JTextField(100);
+ 
+      searchText2.setColumns(15);
+      searchText2.setPreferredSize(new Dimension(1, 20));
+      searchBar.add(searchText2);
+      searchText2.setBackground(new Color(203, 182, 119));
+      searchText2.setBorder(null);
+      searchText2.setEditable(false);
+      
+      
+      
       JLabel label = new JLabel("Search");
       label.setFont(new Font("Sherif", Font.PLAIN, 17));
       searchText = new JTextField(20);
@@ -69,16 +104,24 @@ public class MainGUI {
       actorSearchButton.setAction(actorSearchAction);
       actorSearchButton.setText("Actor Search");
       
+      searchBar.add(inivs2);
+      inivs2.setBackground(new Color(203, 182, 119));
+      inivs2.setBorder(null);
+      
+      searchText2 = new JTextField(100);
+      searchText2.setAction(searchAction);
+      searchText2.setColumns(12);
+      searchBar.add(searchText2);
+      searchText2.setBackground(new Color(203, 182, 119));
+      searchText2.setBorder(null);
+      searchText2.setEditable(false);
+      
       JLabel watchListLabel = new JLabel("Watch List");
       watchListLabel.setFont(new Font("Sherif", Font.PLAIN, 17));
       searchBar.add(watchListLabel);
       JComboBox wl = DropDownList.dropDown();
       searchBar.add(wl);
       
-      backButton.setVisible(false);
-      searchBar.add(backButton);
-      backButton.setAction(backAction);
-      backButton.setText("Back");
       
       return searchBar;
     }
@@ -100,6 +143,7 @@ public class MainGUI {
     
     JPanel temp; 
     Action searchAction = new AbstractAction() {
+      
         @Override
         public void actionPerformed(ActionEvent e) {
             new DataBaseWorker().execute();
@@ -109,7 +153,7 @@ public class MainGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
         	changePanel(temp);
-        	MainGUI.backButton.setVisible(false);
+        	backButton.setVisible(false);
         }
     };
     

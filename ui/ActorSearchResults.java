@@ -55,12 +55,12 @@ public class ActorSearchResults {
 				URL posterLink = new URL(results[0].getImage());
 				ImageIcon posterImage = new ImageIcon(posterLink);
 				poster.setIcon(new ImageIcon(normalizeImage(posterImage)));
-				poster.setHorizontalAlignment(SwingConstants.TRAILING);
+				poster.setHorizontalAlignment(JLabel.CENTER);
 				firstResult.add(poster, JLabel.CENTER); // CENTER DOESNT WORK
 			} catch (MalformedURLException e) {
 				Image icon = (new ImageIcon("NoImageLink.png")).getImage();
 				poster.setIcon(new ImageIcon(icon));
-				poster.setHorizontalAlignment(SwingConstants.TRAILING);
+				poster.setHorizontalAlignment(JLabel.CENTER);
 				firstResult.add(poster, JLabel.CENTER); // CENTER DOESNT WORK
 			}
 		}
@@ -82,12 +82,12 @@ public class ActorSearchResults {
 				URL posterLinkTwo = new URL(results[1].getImage());
 				ImageIcon posterImageTwo = new ImageIcon(posterLinkTwo);
 				posterTwo.setIcon(new ImageIcon(normalizeImage(posterImageTwo)));
-				posterTwo.setHorizontalAlignment(SwingConstants.TRAILING);
+				posterTwo.setHorizontalAlignment(JLabel.CENTER);
 				secondResult.add(posterTwo, JLabel.CENTER); // CENTER DOESNT WORK
 			} catch (MalformedURLException e) {
 				Image icon = (new ImageIcon("NoImageLink.png")).getImage();
 				posterTwo.setIcon(new ImageIcon(icon));
-				posterTwo.setHorizontalAlignment(SwingConstants.TRAILING);
+				posterTwo.setHorizontalAlignment(JLabel.CENTER);
 				secondResult.add(posterTwo, JLabel.CENTER); // CENTER DOESNT WORK
 			}
 		}
@@ -108,12 +108,12 @@ public class ActorSearchResults {
 				URL posterLinkThree = new URL(results[2].getImage());
 				ImageIcon posterImageThree = new ImageIcon(posterLinkThree);
 				posterThree.setIcon(new ImageIcon(normalizeImage(posterImageThree)));
-				posterThree.setHorizontalAlignment(SwingConstants.TRAILING);
+				posterThree.setHorizontalAlignment(JLabel.CENTER);
 				thirdResult.add(posterThree, JLabel.CENTER); // CENTER DOESNT WORK
 			} catch (MalformedURLException e) {
 				Image icon = (new ImageIcon("NoImageLink.png")).getImage();
 				posterThree.setIcon(new ImageIcon(icon));
-				posterThree.setHorizontalAlignment(SwingConstants.TRAILING);
+				posterThree.setHorizontalAlignment(JLabel.CENTER);
 				thirdResult.add(posterThree, JLabel.CENTER); // CENTER DOESNT WORK
 			}
 		}
@@ -134,12 +134,12 @@ public class ActorSearchResults {
 				URL posterLinkFour = new URL(results[3].getImage());
 				ImageIcon posterImageFour = new ImageIcon(posterLinkFour);
 				posterFour.setIcon(new ImageIcon(normalizeImage(posterImageFour)));
-				posterFour.setHorizontalAlignment(SwingConstants.TRAILING);
+				posterFour.setHorizontalAlignment(JLabel.CENTER);
 				fourthResult.add(posterFour, JLabel.CENTER); // CENTER DOESNT WORK
 			} catch (MalformedURLException e) {
 				Image icon = (new ImageIcon("NoImageLink.png")).getImage();
 				posterFour.setIcon(new ImageIcon(icon));
-				posterFour.setHorizontalAlignment(SwingConstants.TRAILING);
+				posterFour.setHorizontalAlignment(JLabel.CENTER);
 				fourthResult.add(posterFour, JLabel.CENTER); // CENTER DOESNT WORK
 			}
 		}
