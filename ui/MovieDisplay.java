@@ -42,19 +42,51 @@ public class MovieDisplay {
         yearLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         infoPanel.add(yearLabel);
         yearLabel.setOpaque(false);
-
+       
+        JLabel Directors = new JLabel("Director: " + String.valueOf(movie.getDirector()));
+        Directors.setFont(new Font("Arial", Font.PLAIN, 20));
+        infoPanel.add(Directors);
+        Directors.setOpaque(false);
+        
         JTextArea paragraph = new JTextArea();
         //paragraph.setBackground(new Color(192, 192, 192));
         paragraph.setAlignmentX(Component.LEFT_ALIGNMENT);
         paragraph.setEditable(false);
         paragraph.setWrapStyleWord(true);
         paragraph.setLineWrap(true);
-        paragraph.setText(movie.getPlot());
-        paragraph.setFont(new Font("Arial", Font.PLAIN, 18));
+        paragraph.setText("\n" + movie.getPlot() + "\n");
+        paragraph.setFont(new Font("Arial", Font.PLAIN, 20));
         paragraph.setOpaque(false);
         paragraph.setColumns(30);
         infoPanel.add(paragraph);
+        
+        JTextArea actorListLabel = new JTextArea();
+        //paragraph.setBackground(new Color(192, 192, 192));
+        actorListLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        actorListLabel.setEditable(false);
+        actorListLabel.setWrapStyleWord(true);
+        actorListLabel.setLineWrap(true);
+        Actor[] actorlist = movie.getActorList();
+        actorListLabel.setText("Stars: " + String.valueOf(actorlist[0].getName()) 
+        + " - " + String.valueOf(actorlist[1].getName()) + " - " + String.valueOf(actorlist[2].getName())  
+        + " - "+ String.valueOf(actorlist[3].getName()));
+        actorListLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        actorListLabel.setOpaque(false);
+        actorListLabel.setColumns(30);
+        infoPanel.add(actorListLabel);
+        
 
+        
+        JLabel ratingLabel = new JLabel("Content Rating: " + String.valueOf(movie.getMovieRating()));
+        ratingLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        infoPanel.add(ratingLabel);
+        ratingLabel.setOpaque(false);
+        
+        JLabel imdbRating = new JLabel("IMDB Rating: " + String.valueOf(movie.getIMDBRating()));
+        imdbRating.setFont(new Font("Arial", Font.PLAIN, 20));
+        infoPanel.add(imdbRating);
+        imdbRating.setOpaque(false);
+        
         EditWatchList button = new EditWatchList(movie);
         button.setBorder(new EmptyBorder(20,0,0,0));
         infoPanel.add(button.getButton());
