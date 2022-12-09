@@ -53,6 +53,11 @@ public class MovieDisplay {
         infoPanel.add(runTime);
         runTime.setOpaque(false);
         
+        JLabel languages = new JLabel("Languages: " + String.valueOf(movie.getLanguages()));
+        languages.setFont(new Font("Arial", Font.PLAIN, 20));
+        infoPanel.add(languages);
+        languages.setOpaque(false);
+        
         JTextArea paragraph = new JTextArea();
         //paragraph.setBackground(new Color(192, 192, 192));
         paragraph.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -76,7 +81,7 @@ public class MovieDisplay {
               + "    1) " + String.valueOf(actorlist[0].getName()) + " (" + actorlist[0].getCharecter() + ")" + "\n" 
               + "    2) " + String.valueOf(actorlist[1].getName()) + " (" + actorlist[1].getCharecter() + ")" +"\n"
               + "    3) " + String.valueOf(actorlist[2].getName()) + " (" + actorlist[2].getCharecter() + ")" + "\n"
-              + "    4) " + String.valueOf(actorlist[3].getName()) + " (" + actorlist[3].getCharecter() + ")");
+              + "    4) " + String.valueOf(actorlist[3].getName()) + " (" + actorlist[3].getCharecter() + ")\n");
         actorListLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         actorListLabel.setOpaque(false);
         actorListLabel.setColumns(30);
@@ -89,10 +94,25 @@ public class MovieDisplay {
         infoPanel.add(ratingLabel);
         ratingLabel.setOpaque(false);
         
-        JLabel imdbRating = new JLabel("IMDB Rating: " + String.valueOf(movie.getIMDBRating()));
+        JLabel imdbRating = new JLabel("IMDB Rating: " + String.valueOf(movie.getIMDBRating()) + "/10.0");
         imdbRating.setFont(new Font("Arial", Font.PLAIN, 20));
         infoPanel.add(imdbRating);
         imdbRating.setOpaque(false);
+        
+        JLabel genres = new JLabel("Genres: " + String.valueOf(movie.getGenres()));
+        genres.setFont(new Font("Arial", Font.PLAIN, 20));
+        infoPanel.add(genres);
+        genres.setOpaque(false);
+        
+        JLabel countries = new JLabel("Countries: " + String.valueOf(movie.getCountries()));
+        countries.setFont(new Font("Arial", Font.PLAIN, 20));
+        infoPanel.add(countries);
+        countries.setOpaque(false);
+        
+        JLabel awards = new JLabel("Awards: " + String.valueOf(movie.getAwards()));
+        awards.setFont(new Font("Arial", Font.PLAIN, 20));
+        infoPanel.add(awards);
+        awards.setOpaque(false);
         
         EditWatchList button = new EditWatchList(movie);
         button.setBorder(new EmptyBorder(20,0,0,0));

@@ -15,20 +15,38 @@ public class Movie {
     private String awards;
     private String genres;
     private String countries;
+    private String languages;
 
     public Movie(String title, String director, String id, String poster,
             Actor[] actorList, String imDbRating, String movieRating,
             String year, String plot, String runTime, String awards,
-            String genres, String countries) {
+            String genres, String countries, String languages) {
         this.title = title;
-        this.director = director;
         this.id = id;
         this.imageLink = poster;
         this.actorList = actorList;
-        this.runTime = runTime;
-        this.awards = awards;
+        if (runTime != "null") {
+            this.runTime = runTime;
+
+        } else {
+            this.runTime = "N/A";
+        }
+        
+        if (director != "") {
+            this.director = director;
+
+        } else {
+            this.director = "N/A";
+        }
+        
+        if (awards != "") {
+            this.awards = awards;
+        } else {
+            this.awards = "No Awards";
+        }
         this.genres = genres;
         this.countries = countries;
+        this.languages = languages;
 
         if (movieRating != "null") {
             this.imDbRating = imDbRating;
@@ -41,7 +59,7 @@ public class Movie {
             this.movieRating = movieRating;
 
         } else {
-            this.movieRating = "Content rating is unknown at this time";
+            this.movieRating = "No Content Rating";
         }
         this.plot = plot;
 
@@ -115,5 +133,9 @@ public class Movie {
 
     public String getCountries() {
         return countries;
+    }
+
+    public String getLanguages() {
+        return languages;
     }
 }
