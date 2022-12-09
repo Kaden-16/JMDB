@@ -86,7 +86,7 @@ public class DataBase {
                         tree.get("results").get(i).get("image").asText(),
                         null, null, null,
                         tree.get("results").get(i).get("description").asText(),
-                        null);
+                        null, "");
                 i++;
             } catch (NullPointerException e) {
                 i++;
@@ -97,7 +97,7 @@ public class DataBase {
                         , null,
                         "", "",
                         tree.get("results").get(i).get("description").asText(),
-                        null);
+                        null, "");
             }
         }
         return movieList;
@@ -128,6 +128,7 @@ public class DataBase {
         String contentRating = tree.get("contentRating").asText();
         String imDbRating = tree.get("imDbRating").asText();
         String plot = tree.get("plot").asText();
+        String runTime = tree.get("runtimeStr").asText();
 
         Actor[] actorList = new Actor[5];
 
@@ -145,7 +146,7 @@ public class DataBase {
         }
 
         Movie finalMovie = new Movie(title, director, ID, image, actorList,
-                imDbRating, contentRating, year, plot);
+                imDbRating, contentRating, year, plot, runTime);
 
         return finalMovie;
     }
