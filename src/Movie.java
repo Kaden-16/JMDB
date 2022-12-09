@@ -12,17 +12,24 @@ public class Movie {
     private String id;
     private String plot;
     private String runTime;
+    private String awards;
+    private String genres;
+    private String countries;
 
     public Movie(String title, String director, String id, String poster,
             Actor[] actorList, String imDbRating, String movieRating,
-            String year, String plot, String runTime) {
+            String year, String plot, String runTime, String awards,
+            String genres, String countries) {
         this.title = title;
         this.director = director;
         this.id = id;
         this.imageLink = poster;
         this.actorList = actorList;
         this.runTime = runTime;
-        
+        this.awards = awards;
+        this.genres = genres;
+        this.countries = countries;
+
         if (movieRating != "null") {
             this.imDbRating = imDbRating;
 
@@ -60,11 +67,11 @@ public class Movie {
     public String getDirector() {
         return director;
     }
-    
+
     public String getRunTime() {
         return runTime;
     }
-    
+
     public String getPoster() {
         return imageLink;
     }
@@ -96,5 +103,17 @@ public class Movie {
     @Override
     public String toString() {
         return title;
+    }
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public String getAwards() {
+        return awards;
+    }
+
+    public String getCountries() {
+        return countries;
     }
 }
