@@ -11,6 +11,7 @@ public class MovieDisplay {
     public static JPanel displayMovie(Movie movie) throws MalformedURLException {
         FlowLayout layout = new FlowLayout();
         layout.setHgap(40);
+        MainGUI.invis.setVisible(false);
         MainGUI.backButton.setVisible(true);
         JPanel contentPane = new JPanel(layout);
 
