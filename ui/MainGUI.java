@@ -22,6 +22,7 @@ public class MainGUI {
 	public static JButton actorSearchButton = new JButton();
 	public static JButton invis = new JButton();
 	public static JButton inivs2 = new JButton();
+	public static boolean isSearched = false;
 
 	public MainGUI() {
 		frame = new JFrame();
@@ -150,8 +151,8 @@ public class MainGUI {
 	Action backAction = new AbstractAction() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			changePanel(temp);
-			backButton.setVisible(false);
+				changePanel(temp);
+				backButton.setVisible(false);
 		}
 	};
 

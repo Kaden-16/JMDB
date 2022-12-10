@@ -12,7 +12,9 @@ public class MovieDisplay {
         FlowLayout layout = new FlowLayout();
         layout.setHgap(40);
         MainGUI.invis.setVisible(false);
-        MainGUI.backButton.setVisible(true);
+        if(MainGUI.isSearched) {
+        	MainGUI.backButton.setVisible(true);
+        }
         JPanel contentPane = new JPanel(layout);
 
         contentPane.setBorder(new EmptyBorder(50, 200, 50, 200));
