@@ -15,6 +15,7 @@ public class SearchResults {
 	
 	public static JPanel showSearchResults(Movie[] results) throws MalformedURLException {
 		MainGUI.backButton.setVisible(false);
+		MainGUI.isSearched = true;
 		JPanel firstResult = new JPanel(new BorderLayout());
 		JPanel secondResult = new JPanel(new BorderLayout());
 		JPanel thirdResult= new JPanel(new BorderLayout());
