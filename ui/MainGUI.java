@@ -11,185 +11,184 @@ import java.io.IOException;
 import javax.swing.*;
 
 public class MainGUI {
-	public static JFrame frame;
-	public static Dimension screenSize;
-	private static JPanel currentPanel;
-	private JTextField searchText;
-	private JTextField searchText2;
-	private JTextField searchText3;
-	private JPanel searchBar;
-	public static JButton backButton = new JButton();
-	public static JButton actorSearchButton = new JButton();
-	public static JButton invis = new JButton();
-	public static JButton inivs2 = new JButton();
-	public static boolean isSearched = false;
+    public static JFrame frame;
+    public static Dimension screenSize;
+    private static JPanel currentPanel;
+    private JTextField searchText;
+    private JTextField searchText2;
+    private JTextField searchText3;
+    private JPanel searchBar;
+    public static JButton backButton = new JButton();
+    public static JButton actorSearchButton = new JButton();
+    public static JButton invis = new JButton();
+    public static JButton inivs2 = new JButton();
+    public static boolean isSearched = false;
 
-	public MainGUI() {
-		frame = new JFrame();
-		frame.add(searchPanel(), BorderLayout.NORTH);
-		currentPanel = welcomePage();
-		frame.add(currentPanel);
-		display();
-	}
+    public MainGUI() {
+        frame = new JFrame();
+        frame.add(searchPanel(), BorderLayout.NORTH);
+        currentPanel = welcomePage();
+        frame.add(currentPanel);
+        display();
+    }
 
-	public static void changePanel(JPanel displayMovie) {
-		frame.remove(currentPanel);
-		currentPanel = displayMovie;
-		frame.add(currentPanel);
-		frame.revalidate();
-		frame.repaint();
-	}
+    public static void changePanel(JPanel displayMovie) {
+        frame.remove(currentPanel);
+        currentPanel = displayMovie;
+        frame.add(currentPanel);
+        frame.revalidate();
+        frame.repaint();
+    }
 
-	private void display() {
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		frame.setSize(screenSize.width, screenSize.height);
-		frame.setVisible(true);
-	}
+    private void display() {
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setSize(screenSize.width, screenSize.height);
+        frame.setVisible(true);
+    }
 
-	private JPanel searchPanel() {
-		searchBar = new JPanel();
+    private JPanel searchPanel() {
+        searchBar = new JPanel();
 
-		searchBar.add(backButton);
-		backButton.setVisible(false);
-		backButton.setAction(backAction);
-		backButton.setBounds(100, 100, 100, 100);
-		backButton.setText("Back");
-		
-		searchBar.add(invis);
-		invis.setText("Back");
-		invis.setForeground(new Color(203, 182, 119));
-		invis.setBackground(new Color(203, 182, 119));
-		invis.setBounds(100, 100, 100, 100);
-		invis.setBorder(null);
+        searchBar.add(backButton);
+        backButton.setVisible(false);
+        backButton.setAction(backAction);
+        backButton.setBounds(100, 100, 100, 100);
+        backButton.setText("Back");
 
+        searchBar.add(invis);
+        invis.setText("Back");
+        invis.setForeground(new Color(203, 182, 119));
+        invis.setBackground(new Color(203, 182, 119));
+        invis.setBounds(100, 100, 100, 100);
+        invis.setBorder(null);
 
+        searchText3 = new JTextField(100);
+        searchText3.setColumns(10);
+        searchBar.add(searchText3);
+        searchText3.setBackground(new Color(203, 182, 119));
+        searchText3.setBorder(null);
+        searchText3.setEditable(false);
 
+        searchText2 = new JTextField(100);
 
-		searchText3 = new JTextField(100);
-		searchText3.setColumns(10);
-		searchBar.add(searchText3);
-		searchText3.setBackground(new Color(203, 182, 119));
-		searchText3.setBorder(null);
-		searchText3.setEditable(false);
+        searchText2.setColumns(15);
+        searchText2.setPreferredSize(new Dimension(1, 20));
+        searchBar.add(searchText2);
+        searchText2.setBackground(new Color(203, 182, 119));
+        searchText2.setBorder(null);
+        searchText2.setEditable(false);
 
-		searchText2 = new JTextField(100);
+        JLabel label = new JLabel("Search");
+        label.setFont(new Font("Sherif", Font.PLAIN, 17));
+        searchText = new JTextField(20);
+        searchText.setAction(searchAction);
+        searchText.setColumns(22);
+        JButton b = new JButton();
+        b.setSize(20, 20);
+        b.setAction(searchAction);
+        Image icon = (new ImageIcon("mag.png")).getImage().getScaledInstance(
+                b.getWidth(), b.getHeight(), Image.SCALE_SMOOTH);
+        b.setIcon(new ImageIcon(icon));
+        searchBar.setVisible(true);
+        searchBar.setBackground(new Color(203, 182, 119));
+        searchBar.add(label).setVisible(true);
+        searchBar.add(searchText).setVisible(true);
+        searchBar.add(b).setVisible(true);
 
-		searchText2.setColumns(15);
-		searchText2.setPreferredSize(new Dimension(1, 20));
-		searchBar.add(searchText2);
-		searchText2.setBackground(new Color(203, 182, 119));
-		searchText2.setBorder(null);
-		searchText2.setEditable(false);
+        searchBar.add(actorSearchButton);
+        actorSearchButton.setAction(actorSearchAction);
+        actorSearchButton.setText("Actor Search");
 
-		JLabel label = new JLabel("Search");
-		label.setFont(new Font("Sherif", Font.PLAIN, 17));
-		searchText = new JTextField(20);
-		searchText.setAction(searchAction);
-		searchText.setColumns(22);
-		JButton b = new JButton();
-		b.setSize(20, 20);
-		b.setAction(searchAction);
-		Image icon = (new ImageIcon("mag.png")).getImage().getScaledInstance(b.getWidth(), b.getHeight(),
-				Image.SCALE_SMOOTH);
-		b.setIcon(new ImageIcon(icon));
-		searchBar.setVisible(true);
-		searchBar.setBackground(new Color(203, 182, 119));
-		searchBar.add(label).setVisible(true);
-		searchBar.add(searchText).setVisible(true);
-		searchBar.add(b).setVisible(true);
+        searchBar.add(inivs2);
+        inivs2.setBackground(new Color(203, 182, 119));
+        inivs2.setBorder(null);
 
-		searchBar.add(actorSearchButton);
-		actorSearchButton.setAction(actorSearchAction);
-		actorSearchButton.setText("Actor Search");
+        searchText2 = new JTextField(100);
+        searchText2.setAction(searchAction);
+        searchText2.setColumns(12);
+        searchBar.add(searchText2);
+        searchText2.setBackground(new Color(203, 182, 119));
+        searchText2.setBorder(null);
+        searchText2.setEditable(false);
 
-		searchBar.add(inivs2);
-		inivs2.setBackground(new Color(203, 182, 119));
-		inivs2.setBorder(null);
+        JLabel watchListLabel = new JLabel("Watch List");
+        watchListLabel.setFont(new Font("Sherif", Font.PLAIN, 17));
+        searchBar.add(watchListLabel);
+        JComboBox wl = DropDownList.dropDown();
+        searchBar.add(wl);
 
-		searchText2 = new JTextField(100);
-		searchText2.setAction(searchAction);
-		searchText2.setColumns(12);
-		searchBar.add(searchText2);
-		searchText2.setBackground(new Color(203, 182, 119));
-		searchText2.setBorder(null);
-		searchText2.setEditable(false);
+        return searchBar;
+    }
 
-		JLabel watchListLabel = new JLabel("Watch List");
-		watchListLabel.setFont(new Font("Sherif", Font.PLAIN, 17));
-		searchBar.add(watchListLabel);
-		JComboBox wl = DropDownList.dropDown();
-		searchBar.add(wl);
+    private JPanel welcomePage() {
+        JLabel welcomeLabel = new JLabel("JMU IMDB");
+        welcomeLabel.setForeground(Color.white);
+        welcomeLabel.setFont(new Font("Amazon Ember", Font.BOLD, 50));
 
-		return searchBar;
-	}
+        JPanel welcome = new JPanel();
+        welcome.setLayout(new GridBagLayout());
+        welcome.setBounds(searchBar.getX(), searchBar.getY(), frame.WIDTH,
+                frame.HEIGHT);
+        welcome.setBackground(new Color(69, 0, 132));
+        welcome.add(welcomeLabel);
+        welcome.setName("WELCOME_PAGE");
 
-	private JPanel welcomePage() {
-		JLabel welcomeLabel = new JLabel("JMU IMDB");
-		welcomeLabel.setForeground(Color.white);
-		welcomeLabel.setFont(new Font("Amazon Ember", Font.BOLD, 50));
+        return welcome;
+    }
 
-		JPanel welcome = new JPanel();
-		welcome.setLayout(new GridBagLayout());
-		welcome.setBounds(searchBar.getX(), searchBar.getY(), frame.WIDTH, frame.HEIGHT);
-		welcome.setBackground(new Color(69, 0, 132));
-		welcome.add(welcomeLabel);
-		welcome.setName("WELCOME_PAGE");
+    JPanel temp;
+    Action searchAction = new AbstractAction() {
 
-		return welcome;
-	}
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            new DataBaseWorker().execute();
+        }
+    };
+    Action backAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            changePanel(temp);
+            backButton.setVisible(false);
+        }
+    };
 
-	JPanel temp;
-	Action searchAction = new AbstractAction() {
+    Action actorSearchAction = new AbstractAction() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                temp = ActorSearchResults.showActorSearchResults(
+                        DataBase.SearchActor(searchText.getText()));
+                changePanel(temp);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			new DataBaseWorker().execute();
-		}
-	};
-	Action backAction = new AbstractAction() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-				changePanel(temp);
-				backButton.setVisible(false);
-		}
-	};
+        }
+    };
 
-	Action actorSearchAction = new AbstractAction() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			try {
-				temp = ActorSearchResults.showActorSearchResults(DataBase.SearchActor(searchText.getText()));
-				changePanel(temp);
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+    public static void main(String[] args) {
+        new MainGUI();
+    }
 
-		}
-	};
+    class DataBaseWorker extends SwingWorker<Boolean, Integer> {
+        Movie[] movies;
 
-	public static void main(String[] args) {
-		new MainGUI();
-	}
+        protected Boolean doInBackground() throws Exception {
+            // Do a time-consuming task.
+            movies = DataBase.SearchMovie(searchText.getText());
+            return true;
 
-	class DataBaseWorker extends SwingWorker<Boolean, Integer> {
-		Movie[] movies;
+        }
 
-		protected Boolean doInBackground() throws Exception {
-			// Do a time-consuming task.
-			movies = DataBase.SearchMovie(searchText.getText());
-			return true;
-
-		}
-
-		protected void done() {
-			try {
-				temp = SearchResults.showSearchResults(movies);
-				changePanel(temp);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
+        protected void done() {
+            try {
+                temp = SearchResults.showSearchResults(movies);
+                changePanel(temp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

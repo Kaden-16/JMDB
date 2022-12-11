@@ -75,7 +75,14 @@ public class DropDownList {
     }
 
     public static void remove(Movie title) {
-        movieList.removeElement(title);
+        boolean inList = false;
+        for (int i = 0; i < movieList.getSize(); i++) {
+            if (movieList.getElementAt(i).getTitle().equals(title.getTitle())) {
+                movieList.removeElement(movieList.getElementAt(i));
+            }
+        }
+
+        // movieList.removeElement(title);
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<Movie> a = new ArrayList<Movie>();
         try {
@@ -110,11 +117,13 @@ public class DropDownList {
             String countries = movie.get("countries").asText();
             String languages = movie.get("languages").asText();
             Actor[] actorList = new Actor[5];
-            
+
             for (int i = 0; i < 5; i++) {
-                String name = movie.get("actorList").get(i).get("name").asText();
+                String name = movie.get("actorList").get(i).get(
+                        "name").asText();
                 String id1 = movie.get("actorList").get(i).get("id").asText();
-                String image1 = movie.get("actorList").get(i).get("image").asText();
+                String image1 = movie.get("actorList").get(i).get(
+                        "image").asText();
                 String charecter = movie.get("actorList").get(i).get(
                         "charecter").asText();
                 actorList[i] = new Actor(name, id1, image1, charecter);
