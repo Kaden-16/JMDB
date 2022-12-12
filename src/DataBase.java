@@ -38,7 +38,7 @@ public class DataBase {
             JOptionPane.showMessageDialog(jFrame,
                     "Please enter valid search parameters!\n"
                             + "Please try again");
-            //            System.exit(0);
+            return null;
 
         }
 
