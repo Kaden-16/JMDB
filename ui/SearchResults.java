@@ -1,198 +1,50 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.io.IOException;
+import java.awt.*;
 import java.net.MalformedURLException;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class SearchResults {
 
-	
-	public static JPanel showSearchResults(Movie[] movies) throws MalformedURLException {
+	private static final Color DARKER_BLUE = new Color(26, 36, 43);
+
+	public static JPanel showSearchResults(Movie[] results) {
 		MainGUI.backButton.setVisible(false);
 		MainGUI.isSearched = true;
-		JPanel firstResult = new JPanel(new BorderLayout());
-		JPanel secondResult = new JPanel(new BorderLayout());
-		JPanel thirdResult= new JPanel(new BorderLayout());
-		JPanel fourthResult= new JPanel(new BorderLayout());
-		JPanel fifthResult= new JPanel(new BorderLayout());
-		JPanel sixthResult= new JPanel(new BorderLayout());
-		JPanel mainPanel = new JPanel(new GridLayout(3,2));
-		
-		Movie[] results = new Movie[15];
-		int n = 0;
-		for(int i = 0; i < movies.length; i++) {
-		    if(movies[i].getYear() != 0) {
-		        results[n] = movies[i];
-		        n++;
-		    }
-		    if(n == 6) {
-		        break;
-		    }
+
+		JPanel mainPanel = new JPanel();
+		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		mainPanel.setBackground(DARKER_BLUE);
+
+		JLabel resultLabel = new JLabel("Results");
+		resultLabel.setForeground(new Color(255, 255, 255));
+		resultLabel.setFont(new Font("Dialog", Font.PLAIN, 40));
+		resultLabel.setBorder(new EmptyBorder(50,55,8,100));
+
+		JPanel movies = new JPanel(new FlowLayout());
+		movies.setBackground(DARKER_BLUE);
+		JScrollPane scroll = new JScrollPane(movies, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
+		scroll.getHorizontalScrollBar().setUnitIncrement(80);
+		scroll.setBorder(new EmptyBorder(0, 40, 0, 40));
+		scroll.setBackground(DARKER_BLUE);
+
+		mainPanel.add(resultLabel);
+		mainPanel.add(scroll);
+
+		for (Movie movie : results) {
+			new Thread(() -> {
+				try {
+					if (movie.getPoster().isEmpty()) {
+						Thread.sleep(3000);
+					} else {
+						movies.add(new SearchResultNode(movie));
+					}
+				} catch (MalformedURLException | InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+			}).start();
 		}
-		
-		JLabel firstLabel;
-		JLabel secondLabel;
-		JLabel thirdLabel;
-		JLabel fourthLabel;
-		JLabel fifthLabel;
-		JLabel sixthLabel;
-		Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
-		
-		Color purple = new Color(181,153,206);
-		
-		mainPanel.add(firstResult);
-		mainPanel.add(secondResult);
-		mainPanel.add(thirdResult);
-		mainPanel.add(fourthResult);
-		mainPanel.add(fifthResult);
-		mainPanel.add(sixthResult);
-		
-		
-		firstResult.setSize(250, 75);
-		firstResult.setBorder(blackBorder);
-		firstResult.setBackground(purple);
-		String movieResultOne = String.format("%s (%s)", results[0].getTitle(), results[0].getYear());
-		firstLabel = new JLabel(movieResultOne);
-		firstLabel.setBackground(Color.blue);
-		firstLabel.setHorizontalAlignment(JLabel.CENTER);
-		firstResult.add(firstLabel,BorderLayout.NORTH);
-		firstResult.setVisible(true);
-		
-		
-		JButton button1 = new JButton("View " + results[0].getTitle());
-		button1.setSize(50, 10);
-		button1.setHorizontalAlignment(JButton.CENTER);
-		firstResult.add(button1, BorderLayout.SOUTH);
-		
-		button1.addActionListener(e -> {
-			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[0].getID())));
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
-		
-		secondResult.setSize(250, 75);
-		secondResult.setBorder(blackBorder);
-		secondResult.setBackground(purple);
-		String movieResultTwo = String.format("%s (%s)", results[1].getTitle(), results[1].getYear());
-		secondLabel = new JLabel(movieResultTwo);
-		secondLabel.setHorizontalAlignment(JLabel.CENTER);
-		secondResult.add(secondLabel,BorderLayout.NORTH);
-		secondResult.setVisible(true);
-		
-		JButton button2 = new JButton("View " + results[1].getTitle());
-		button2.setSize(250, 75);
-		button2.setHorizontalAlignment(JButton.CENTER);
-		secondResult.add(button2, BorderLayout.SOUTH);
-		
-		button2.addActionListener(e -> {
-			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[1].getID())));
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
-		
-		thirdResult.setSize(250, 75);
-		thirdResult.setBorder(blackBorder);
-		thirdResult.setBackground(purple);
-		String movieResultThree = String.format("%s (%s)", results[2].getTitle(), results[2].getYear());
-		thirdLabel = new JLabel(movieResultThree);
-		thirdLabel.setHorizontalAlignment(JLabel.CENTER);
-		thirdResult.add(thirdLabel,BorderLayout.NORTH);
-		thirdResult.setVisible(true);
-		
-		JButton button3 = new JButton("View " + results[2].getTitle());
-		button3.setSize(250, 75);
-		button3.setHorizontalAlignment(JButton.CENTER);
-		thirdResult.add(button3, BorderLayout.SOUTH);
-		
-		button3.addActionListener(e -> {
-			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[2].getID())));
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
-		
-		fourthResult.setSize(250, 75);
-		fourthResult.setBorder(blackBorder);
-		fourthResult.setBackground(purple);
-		String movieResultFour = String.format("%s (%s)", results[3].getTitle(), results[3].getYear());
-		fourthLabel = new JLabel(movieResultFour);
-		fourthLabel.setHorizontalAlignment(JLabel.CENTER);
-		fourthResult.add(fourthLabel,BorderLayout.NORTH);
-		fourthResult.setVisible(true);
-		
-		JButton button4 = new JButton("View " + results[3].getTitle());
-		button4.setSize(250, 75);
-		button4.setHorizontalAlignment(JButton.CENTER);
-		fourthResult.add(button4, BorderLayout.SOUTH);
-		
-		button4.addActionListener(e -> {
-			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[3].getID())));
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
-		
-		fifthResult.setSize(250, 75);
-		fifthResult.setBorder(blackBorder);
-		fifthResult.setBackground(purple);
-		String movieResultFive = String.format("%s (%s)", results[4].getTitle(), results[4].getYear());
-		fifthLabel = new JLabel(movieResultFive);
-		fifthLabel.setHorizontalAlignment(JLabel.CENTER);
-		fifthResult.add(fifthLabel,BorderLayout.NORTH);
-		fifthResult.setVisible(true);
-		
-		JButton button5 = new JButton("View " + results[4].getTitle());
-		button5.setSize(250, 75);
-		button5.setHorizontalAlignment(JButton.CENTER);
-		fifthResult.add(button5, BorderLayout.SOUTH);
-		
-		button5.addActionListener(e -> {
-			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[4].getID())));
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
-		
-		sixthResult.setSize(250, 75);
-		sixthResult.setBorder(blackBorder);
-		sixthResult.setBackground(purple);
-		String movieResultSix = String.format("%s (%s)", results[5].getTitle(), results[5].getYear());
-		sixthLabel = new JLabel(movieResultSix);
-		sixthLabel.setHorizontalAlignment(JLabel.CENTER);
-		sixthResult.add(sixthLabel,BorderLayout.NORTH);
-		sixthResult.setVisible(true);
-		
-		JButton button6 = new JButton("View " + results[5].getTitle());
-		button6.setSize(250, 75);
-		button6.setHorizontalAlignment(JButton.CENTER);
-		sixthResult.add(button6, BorderLayout.SOUTH);
-		
-		button6.addActionListener(e -> {
-			try {
-				MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(results[5].getID())));
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
 
 		return mainPanel;
 	}

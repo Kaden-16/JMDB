@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 import javax.swing.*;
 
 public class MainGUI {
