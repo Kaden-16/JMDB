@@ -31,8 +31,8 @@ public class WatchListTest {
         frame.add(bottom, BorderLayout.SOUTH);
         frame.add(bottom);
         // add buttons to frame
-        Movie starWars = new Movie("Star Wars", null, null, null, null, null,
-                null, null, null);
+        Movie starWars = new Movie("Star Wars", "1937", "1937", "1937", null, "1937",
+                "1937", "1937", null, null, null, null, null, null);
         EditWatchList edit1 = new EditWatchList(starWars);
         bottom.add(edit1.getButton());
         /*

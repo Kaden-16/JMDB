@@ -19,7 +19,9 @@ public class MovieTest {
         Actor[] list = new Actor[3];
 
         Movie test = new Movie("Harry Potter", "JK Rowling", "123456",
-                "Poster link", list, "PG", "8.0", "1937", "that dude gets a wand");
+                "Poster link", list, "PG", "8.0", "1937",
+                "that dude gets a wand", "19 hours", "9 awards", "Action",
+                "Detroit", "Latin");
         int i = 0;
         assertEquals(test.getTitle(), "Harry Potter");
         assertEquals(test.getDirector(), "JK Rowling");
@@ -30,7 +32,12 @@ public class MovieTest {
         assertEquals(test.getIMDBRating(), "PG");
         assertEquals(test.getYear(), 1937);
         assertEquals(test.getPlot(), "that dude gets a wand");
-        assertEquals(test.getTitle(), "Harry Potter");
+        assertEquals(test.getLanguages(), "Latin");
+        assertEquals(test.getRunTime(), "19 hours");
+        assertEquals(test.getGenres(), "Action");
+        assertEquals(test.getAwards(), "9 awards");
+        assertEquals(test.getCountries(), "Detroit");
+
 
     }
 }
