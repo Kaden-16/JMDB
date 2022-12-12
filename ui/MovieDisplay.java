@@ -131,8 +131,8 @@ public class MovieDisplay {
         Dimension dimensions = MainGUI.screenSize;
         double idealHeight = dimensions.height * imageScale;
         double idealWidth = (idealHeight / image.getIconHeight()) * image.getIconWidth();
-        System.out.println(dimensions);
-        System.out.println(idealWidth + " " + idealHeight);
+        // System.out.println(dimensions);
+        // System.out.println(idealWidth + " " + idealHeight);
 
         return image.getImage().getScaledInstance((int) idealWidth, (int) idealHeight, Image.SCALE_SMOOTH);
     }

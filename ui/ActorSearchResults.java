@@ -58,7 +58,7 @@ public class ActorSearchResults {
 				poster.setHorizontalAlignment(JLabel.CENTER);
 				firstResult.add(poster, JLabel.CENTER); // CENTER DOESNT WORK
 			} catch (MalformedURLException e) {
-				Image icon = (new ImageIcon("NoImageLink.png")).getImage();
+				Image icon = (new ImageIcon("nopicture.jpg")).getImage();
 				poster.setIcon(new ImageIcon(icon));
 				poster.setHorizontalAlignment(JLabel.CENTER);
 				firstResult.add(poster, JLabel.CENTER); // CENTER DOESNT WORK
@@ -85,7 +85,7 @@ public class ActorSearchResults {
 				posterTwo.setHorizontalAlignment(JLabel.CENTER);
 				secondResult.add(posterTwo, JLabel.CENTER); // CENTER DOESNT WORK
 			} catch (MalformedURLException e) {
-				Image icon = (new ImageIcon("NoImageLink.png")).getImage();
+				Image icon = (new ImageIcon("nopicture.jpg")).getImage();
 				posterTwo.setIcon(new ImageIcon(icon));
 				posterTwo.setHorizontalAlignment(JLabel.CENTER);
 				secondResult.add(posterTwo, JLabel.CENTER); // CENTER DOESNT WORK
@@ -111,7 +111,7 @@ public class ActorSearchResults {
 				posterThree.setHorizontalAlignment(JLabel.CENTER);
 				thirdResult.add(posterThree, JLabel.CENTER); // CENTER DOESNT WORK
 			} catch (MalformedURLException e) {
-				Image icon = (new ImageIcon("NoImageLink.png")).getImage();
+				Image icon = (new ImageIcon("nopicture.jpg")).getImage();
 				posterThree.setIcon(new ImageIcon(icon));
 				posterThree.setHorizontalAlignment(JLabel.CENTER);
 				thirdResult.add(posterThree, JLabel.CENTER); // CENTER DOESNT WORK
@@ -137,48 +137,12 @@ public class ActorSearchResults {
 				posterFour.setHorizontalAlignment(JLabel.CENTER);
 				fourthResult.add(posterFour, JLabel.CENTER); // CENTER DOESNT WORK
 			} catch (MalformedURLException e) {
-				Image icon = (new ImageIcon("NoImageLink.png")).getImage();
+				Image icon = (new ImageIcon("nopicture.jpg")).getImage();
 				posterFour.setIcon(new ImageIcon(icon));
 				posterFour.setHorizontalAlignment(JLabel.CENTER);
 				fourthResult.add(posterFour, JLabel.CENTER); // CENTER DOESNT WORK
 			}
 		}
-
-		/*
-		 * fifthResult.setSize(250, 75); fifthResult.setBorder(blackBorder);
-		 * fifthResult.setBackground(purple); String actorResultFive =
-		 * String.format("%s", results[0].getName()); fifthLabel = new
-		 * JLabel(actorResultFive); fifthLabel.setBackground(Color.blue);
-		 * fifthLabel.setHorizontalAlignment(JLabel.CENTER);
-		 * fifthResult.add(fifthLabel,BorderLayout.NORTH); fifthResult.setVisible(true);
-		 * 
-		 * 
-		 * JButton button5 = new JButton("View " + results[0].getName());
-		 * button5.setSize(50, 10); button5.setHorizontalAlignment(JButton.CENTER);
-		 * fifthResult.add(button5, BorderLayout.SOUTH);
-		 * 
-		 * button5.addActionListener(e -> { //try {
-		 * //MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(
-		 * results[4].getID()))); //} catch (IOException e1) { // TODO Auto-generated
-		 * catch block //e1.printStackTrace(); //} });
-		 * 
-		 * sixthResult.setSize(250, 75); sixthResult.setBorder(blackBorder);
-		 * sixthResult.setBackground(purple); String actorResultSix =
-		 * String.format("%s", results[0].getName()); sixthLabel = new
-		 * JLabel(actorResultSix); sixthLabel.setBackground(Color.blue);
-		 * sixthLabel.setHorizontalAlignment(JLabel.CENTER);
-		 * sixthResult.add(sixthLabel,BorderLayout.NORTH); sixthResult.setVisible(true);
-		 * 
-		 * 
-		 * JButton button6 = new JButton("View " + results[0].getName());
-		 * button6.setSize(50, 10); button6.setHorizontalAlignment(JButton.CENTER);
-		 * sixthResult.add(button6, BorderLayout.SOUTH);
-		 * 
-		 * button6.addActionListener(e -> { //try {
-		 * //MainGUI.changePanel(MovieDisplay.displayMovie(DataBase.SearchMovieByID(
-		 * results[4].getID()))); //} catch (IOException e1) { // TODO Auto-generated
-		 * catch block //e1.printStackTrace(); //} });
-		 */
 
 		return mainPanel;
 	}
@@ -188,8 +152,8 @@ public class ActorSearchResults {
 		Dimension dimensions = MainGUI.screenSize;
 		double idealHeight = dimensions.height * .3;
 		double idealWidth = (idealHeight / image.getIconHeight()) * image.getIconWidth();
-		System.out.println(dimensions);
-		System.out.println(idealWidth + " " + idealHeight);
+		// System.out.println(dimensions);
+		// System.out.println(idealWidth + " " + idealHeight);
 
 		return image.getImage().getScaledInstance((int) idealWidth, (int) idealHeight, Image.SCALE_SMOOTH);
 	}

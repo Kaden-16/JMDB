@@ -27,7 +27,7 @@ public class SearchResultNode extends JPanel {
             posterImage = new URL("https://imdb-api.com/API/ResizeImage?apikey=k_mcx0w8kk&size=192x264&url=" + movie.getPoster());
             button.setIcon(new ImageIcon(posterImage));
         }
-        System.out.println(posterImage);
+        // System.out.println(posterImage);
 
         JLabel title = new JLabel("<html>"+ movie.getTitle() +"</html>");
         title.setBorder(new EmptyBorder(10, 10, 10, 10));
