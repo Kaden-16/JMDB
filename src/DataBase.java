@@ -166,6 +166,16 @@ public class DataBase {
     public static Actor[] SearchActor(String name) throws IOException {
         Actor[] actorList = new Actor[4];
 
+        if (containsIllegals(name) || name == null
+                || name.trim().isEmpty()) {
+            JFrame jFrame = new JFrame();
+
+            JOptionPane.showMessageDialog(jFrame,
+                    "Please enter valid actor search parameters!\n"
+                            + "Please try again");
+            return null;
+
+        }
         URL oracle = new URL(
                 "https://imdb-api.com/en/API/SearchName/k_mcx0w8kk/" + name);
 
