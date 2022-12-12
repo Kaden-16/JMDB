@@ -22,7 +22,6 @@ public class MovieTest {
                 "Poster link", list, "PG", "8.0", "1937",
                 "that dude gets a wand", "19 hours", "9 awards", "Action",
                 "Detroit", "Latin");
-        int i = 0;
         assertEquals(test.getTitle(), "Harry Potter");
         assertEquals(test.getDirector(), "JK Rowling");
         assertEquals(test.getID(), "123456");
