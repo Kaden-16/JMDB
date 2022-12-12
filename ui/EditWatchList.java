@@ -8,8 +8,14 @@ public class EditWatchList extends JButton {
     private JButton editButton;
 
     public EditWatchList(Movie title) {
-        //if (DropDownList.movieList().getIndexOf(title) == -1) {
-        if (DropDownList.movieList().getIndexOf(title) == -1) {
+        boolean inList = false;
+        for (int i = 0; i < DropDownList.movieList().getSize(); i++) {
+            if (DropDownList.movieList().getElementAt(i).getTitle().equals(
+                    title.getTitle())) {
+                inList = true;
+            }
+        }
+        if (!inList) {
             this.editButton = new JButton("Add to Watch List");
             clickCount = 0;
         } else {
