@@ -13,7 +13,7 @@ import javax.swing.border.Border;
 public class SearchResults {
 
 	
-	public static JPanel showSearchResults(Movie[] results) throws MalformedURLException {
+	public static JPanel showSearchResults(Movie[] movies) throws MalformedURLException {
 		MainGUI.backButton.setVisible(false);
 		MainGUI.isSearched = true;
 		JPanel firstResult = new JPanel(new BorderLayout());
@@ -24,6 +24,17 @@ public class SearchResults {
 		JPanel sixthResult= new JPanel(new BorderLayout());
 		JPanel mainPanel = new JPanel(new GridLayout(3,2));
 		
+		Movie[] results = new Movie[10];
+		int n = 0;
+		for(int i = 0; i < movies.length; i++) {
+		    if(movies[i].getYear() != 0) {
+		        results[n] = movies[i];
+		        n++;
+		    }
+		    if(n == 6) {
+		        break;
+		    }
+		}
 		
 		JLabel firstLabel;
 		JLabel secondLabel;
