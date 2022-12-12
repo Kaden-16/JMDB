@@ -1,8 +1,4 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Image;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -15,8 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 public class ActorSearchResults {
+
+	private static final Color DARKER_BLUE = new Color(26, 36, 43);
 
 	public static JPanel showActorSearchResults(Actor[] results) throws MalformedURLException {
 		MainGUI.backButton.setVisible(false);
@@ -32,8 +31,6 @@ public class ActorSearchResults {
 		JLabel fourthLabel;
 		Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 
-		Color purple = new Color(181, 153, 206);
-
 		mainPanel.add(firstResult);
 		mainPanel.add(secondResult);
 		mainPanel.add(thirdResult);
@@ -41,13 +38,16 @@ public class ActorSearchResults {
 
 		firstResult.setSize(250, 75);
 		firstResult.setBorder(blackBorder);
-		firstResult.setBackground(purple);
+		firstResult.setBackground(DARKER_BLUE);
 		String actorResultOne = String.format("%s", results[0].getName());
 		firstLabel = new JLabel(actorResultOne);
 		firstLabel.setBackground(Color.blue);
 		firstLabel.setHorizontalAlignment(JLabel.CENTER);
+		firstLabel.setBorder(new EmptyBorder(30, 0, 0, 0));
+		firstLabel.setFont(new Font("Dialog", Font.BOLD, 24));
 		firstResult.add(firstLabel, BorderLayout.NORTH);
 		firstResult.setVisible(true);
+		firstLabel.setForeground(Color.WHITE);
 
 		JLabel poster = new JLabel();
 		if (results[0].getImage() != null) {
@@ -67,13 +67,16 @@ public class ActorSearchResults {
 
 		secondResult.setSize(250, 75);
 		secondResult.setBorder(blackBorder);
-		secondResult.setBackground(purple);
+		secondResult.setBackground(DARKER_BLUE);
 		String actorResultTwo = String.format("%s", results[1].getName());
 		secondLabel = new JLabel(actorResultTwo);
 		secondLabel.setBackground(Color.blue);
 		secondLabel.setHorizontalAlignment(JLabel.CENTER);
+		secondLabel.setBorder(new EmptyBorder(30, 0, 0, 0));
+		secondLabel.setFont(new Font("Dialog", Font.BOLD, 24));
 		secondResult.add(secondLabel, BorderLayout.NORTH);
 		secondResult.setVisible(true);
+		secondLabel.setForeground(Color.WHITE);
 
 		JLabel posterTwo = new JLabel();
 		if (results[1].getImage() != null) {
@@ -94,13 +97,16 @@ public class ActorSearchResults {
 
 		thirdResult.setSize(250, 75);
 		thirdResult.setBorder(blackBorder);
-		thirdResult.setBackground(purple);
+		thirdResult.setBackground(DARKER_BLUE);
 		String actorResultThree = String.format("%s", results[2].getName());
 		thirdLabel = new JLabel(actorResultThree);
 		thirdLabel.setBackground(Color.blue);
 		thirdLabel.setHorizontalAlignment(JLabel.CENTER);
+		thirdLabel.setBorder(new EmptyBorder(30, 0, 0, 0));
+		thirdLabel.setFont(new Font("Dialog", Font.BOLD, 24));
 		thirdResult.add(thirdLabel, BorderLayout.NORTH);
 		thirdResult.setVisible(true);
+		thirdLabel.setForeground(Color.WHITE);
 
 		JLabel posterThree = new JLabel();
 		if (results[2].getImage() != null) {
@@ -120,13 +126,16 @@ public class ActorSearchResults {
 
 		fourthResult.setSize(250, 75);
 		fourthResult.setBorder(blackBorder);
-		fourthResult.setBackground(purple);
+		fourthResult.setBackground(DARKER_BLUE);
 		String actorResultFour = String.format("%s", results[3].getName());
 		fourthLabel = new JLabel(actorResultFour);
 		fourthLabel.setBackground(Color.blue);
 		fourthLabel.setHorizontalAlignment(JLabel.CENTER);
+		fourthLabel.setBorder(new EmptyBorder(30, 0, 0, 0));
+		fourthLabel.setFont(new Font("Dialog", Font.BOLD, 24));
 		fourthResult.add(fourthLabel, BorderLayout.NORTH);
 		fourthResult.setVisible(true);
+		fourthLabel.setForeground(Color.WHITE);
 
 		JLabel posterFour = new JLabel();
 		if (results[3].getImage() != null) {

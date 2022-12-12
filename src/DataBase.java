@@ -128,14 +128,18 @@ public class DataBase {
         
         Actor[] actorList = new Actor[5];
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
+            try {
+                String name = tree.get("actorList").get(i).get("name").asText();
+                String id1 = tree.get("actorList").get(i).get("id").asText();
+                String image1 = tree.get("actorList").get(i).get("image").asText();
+                String charecter = tree.get("actorList").get(i).get(
+                        "asCharacter").asText();
+                actorList[i] = new Actor(name, id1, image1, charecter);
+            } catch (NullPointerException e) {
+                System.out.println("None");
+            }
 
-            String name = tree.get("actorList").get(i).get("name").asText();
-            String id1 = tree.get("actorList").get(i).get("id").asText();
-            String image1 = tree.get("actorList").get(i).get("image").asText();
-            String charecter = tree.get("actorList").get(i).get(
-                    "asCharacter").asText();
-            actorList[i] = new Actor(name, id1, image1, charecter);
             
 
             // System.out.println(actorList[i]);

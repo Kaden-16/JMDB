@@ -49,6 +49,7 @@ public class MainGUI {
 
     private JPanel searchPanel() {
         searchBar = new JPanel();
+        Color searchColor = new Color(51, 51, 65);
 
         searchBar.add(backButton);
         backButton.setVisible(false);
@@ -58,15 +59,15 @@ public class MainGUI {
 
         searchBar.add(invis);
         invis.setText("Back");
-        invis.setForeground(new Color(203, 182, 119));
-        invis.setBackground(new Color(203, 182, 119));
+        invis.setForeground(searchColor);
+        invis.setBackground(searchColor);
         invis.setBounds(100, 100, 100, 100);
         invis.setBorder(null);
 
         searchText3 = new JTextField(100);
         searchText3.setColumns(10);
         searchBar.add(searchText3);
-        searchText3.setBackground(new Color(203, 182, 119));
+        searchText3.setBackground(searchColor);
         searchText3.setBorder(null);
         searchText3.setEditable(false);
 
@@ -75,44 +76,46 @@ public class MainGUI {
         searchText2.setColumns(15);
         searchText2.setPreferredSize(new Dimension(1, 20));
         searchBar.add(searchText2);
-        searchText2.setBackground(new Color(203, 182, 119));
+        searchText2.setBackground(searchColor);
         searchText2.setBorder(null);
         searchText2.setEditable(false);
 
-        JLabel label = new JLabel("Search");
+        JLabel label = new JLabel("Search ");
         label.setFont(new Font("Sherif", Font.PLAIN, 17));
+        label.setForeground(Color.WHITE);
         searchText = new JTextField(20);
         searchText.setAction(searchAction);
         searchText.setColumns(22);
         JButton b = new JButton();
         b.setSize(20, 20);
         b.setAction(searchAction);
-        Image icon = (new ImageIcon("mag.png")).getImage().getScaledInstance(
+        Image icon = (new ImageIcon("search-icon.png")).getImage().getScaledInstance(
                 b.getWidth(), b.getHeight(), Image.SCALE_SMOOTH);
         b.setIcon(new ImageIcon(icon));
         searchBar.setVisible(true);
-        searchBar.setBackground(new Color(203, 182, 119));
+        searchBar.setBackground(searchColor);
         searchBar.add(label).setVisible(true);
         searchBar.add(searchText).setVisible(true);
         searchBar.add(b).setVisible(true);
 
         searchBar.add(actorSearchButton);
         actorSearchButton.setAction(actorSearchAction);
-        actorSearchButton.setText("Actor Search");
+        actorSearchButton.setText("Actor Search ");
 
         searchBar.add(inivs2);
-        inivs2.setBackground(new Color(203, 182, 119));
+        inivs2.setBackground(searchColor);
         inivs2.setBorder(null);
 
         searchText2 = new JTextField(100);
         searchText2.setAction(searchAction);
         searchText2.setColumns(12);
         searchBar.add(searchText2);
-        searchText2.setBackground(new Color(203, 182, 119));
+        searchText2.setBackground(searchColor);
         searchText2.setBorder(null);
         searchText2.setEditable(false);
 
-        JLabel watchListLabel = new JLabel("Watch List");
+        JLabel watchListLabel = new JLabel("Watch List ");
+        watchListLabel.setForeground(Color.WHITE);
         watchListLabel.setFont(new Font("Sherif", Font.PLAIN, 17));
         searchBar.add(watchListLabel);
         JComboBox wl = DropDownList.dropDown();
@@ -122,17 +125,20 @@ public class MainGUI {
     }
 
     private JPanel welcomePage() {
-        JLabel welcomeLabel = new JLabel("JMU IMDB");
-        welcomeLabel.setForeground(Color.white);
-        welcomeLabel.setFont(new Font("Amazon Ember", Font.BOLD, 50));
+//        JLabel welcomeLabel = new JLabel("JMU IMDB");
+//        welcomeLabel.setForeground(Color.white);
+//        welcomeLabel.setFont(new Font("Amazon Ember", Font.BOLD, 50));
 
         JPanel welcome = new JPanel();
-        welcome.setLayout(new GridBagLayout());
-        welcome.setBounds(searchBar.getX(), searchBar.getY(), frame.WIDTH,
-                frame.HEIGHT);
-        welcome.setBackground(new Color(69, 0, 132));
-        welcome.add(welcomeLabel);
+//        welcome.setBounds(searchBar.getX(), searchBar.getY(), frame.WIDTH,
+//                frame.HEIGHT);
+//        welcome.setBackground(new Color(69, 0, 132));
+//        welcome.add(welcomeLabel);
         welcome.setName("WELCOME_PAGE");
+        ImageIcon backgroundGif = new ImageIcon("imdb.gif");
+        JLabel background = new JLabel(backgroundGif, SwingConstants.CENTER);
+        welcome.setBackground(new Color(51, 51, 65));
+        welcome.add(background);
 
         return welcome;
     }
