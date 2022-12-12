@@ -118,17 +118,22 @@ public class DropDownList {
             String languages = movie.get("languages").asText();
             Actor[] actorList = new Actor[5];
 
-            for (int i = 0; i < 5; i++) {
-                String name = movie.get("actorList").get(i).get(
-                        "name").asText();
-                String id1 = movie.get("actorList").get(i).get("id").asText();
-                String image1 = movie.get("actorList").get(i).get(
-                        "image").asText();
-                String charecter = movie.get("actorList").get(i).get(
-                        "charecter").asText();
-                actorList[i] = new Actor(name, id1, image1, charecter);
-            }
+            for (int i = 0; i < 4; i++) {
+                try {
+                    String name = movie.get("actorList").get(i).get(
+                            "name").asText();
+                    String id1 = movie.get("actorList").get(i).get(
+                            "id").asText();
+                    String image1 = movie.get("actorList").get(i).get(
+                            "image").asText();
+                    String charecter = movie.get("actorList").get(i).get(
+                            "asCharacter").asText();
+                    actorList[i] = new Actor(name, id1, image1, charecter);
+                } catch (NullPointerException e) {
+                    System.out.println("None");
+                }
 
+            }
             Movie tempMovie = new Movie(title, director, ID, image, actorList,
                     imDbRating, contentRating, year, plot, runTime, awards,
                     genres, countries, languages);
