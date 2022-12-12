@@ -67,16 +67,7 @@ public class DataBase {
         ObjectMapper map = new ObjectMapper();
 
         JsonNode tree = map.readTree(in);
-//        InputStream is = new URL(url).openStream();
 
-//        try {
-//          BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-//          String jsonText = readAll(rd);
-//          JSONObject json = new JSONObject(jsonText);
-//          return json;
-//        } finally {
-//          is.close();
-//        }
         for (int i = 0; i < 15;) {
             try {
 
@@ -166,6 +157,16 @@ public class DataBase {
     public static Actor[] SearchActor(String name) throws IOException {
         Actor[] actorList = new Actor[4];
 
+        if (containsIllegals(name) || name == null
+                || name.trim().isEmpty()) {
+            JFrame jFrame = new JFrame();
+
+            JOptionPane.showMessageDialog(jFrame,
+                    "Please enter valid actor search parameters!\n"
+                            + "Please try again");
+            return null;
+
+        }
         URL oracle = new URL(
                 "https://imdb-api.com/en/API/SearchName/k_mcx0w8kk/" + name);
 

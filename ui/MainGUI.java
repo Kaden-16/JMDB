@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 import javax.swing.*;
 
 public class MainGUI {
@@ -158,9 +157,11 @@ public class MainGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                temp = ActorSearchResults.showActorSearchResults(
-                        DataBase.SearchActor(searchText.getText()));
-                changePanel(temp);
+                Actor[] actor = DataBase.SearchActor(searchText.getText());
+                if(actor != null) {
+                    temp = ActorSearchResults.showActorSearchResults(actor);
+                    changePanel(temp);
+                }
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
@@ -178,14 +179,17 @@ public class MainGUI {
         protected Boolean doInBackground() throws Exception {
             // Do a time-consuming task.
             movies = DataBase.SearchMovie(searchText.getText());
-            return true;
+                return true;
+    
 
         }
 
         protected void done() {
             try {
-                temp = SearchResults.showSearchResults(movies);
-                changePanel(temp);
+                if(movies != null) {
+                    temp = SearchResults.showSearchResults(movies);
+                    changePanel(temp);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

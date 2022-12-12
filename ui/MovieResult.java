@@ -8,7 +8,7 @@ public class MovieResult {
     public static JPanel createMovieResult(Movie movie) {
         JPanel movieButton = new JPanel();
         JLabel label = new JLabel(String.format("%s (%s)", movie.getTitle(), movie.getYear()));
-        System.out.println(label);
+        // System.out.println(label);
 
         return movieButton;
     }

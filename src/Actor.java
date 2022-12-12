@@ -1,6 +1,5 @@
 
 public class Actor {
-    private String movieList[];
 
     private String name;
     private String id;
