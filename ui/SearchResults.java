@@ -24,7 +24,7 @@ public class SearchResults {
 		JPanel sixthResult= new JPanel(new BorderLayout());
 		JPanel mainPanel = new JPanel(new GridLayout(3,2));
 		
-		Movie[] results = new Movie[10];
+		Movie[] results = new Movie[15];
 		int n = 0;
 		for(int i = 0; i < movies.length; i++) {
 		    if(movies[i].getYear() != 0) {
