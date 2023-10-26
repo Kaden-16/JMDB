@@ -1,2 +1,2 @@
-# JMDB
-Replica of the IMDB movie website
+# James Madison Database (JMDb)
+Replica of the IMDb movie website
